@@ -1,20 +1,19 @@
 <mat-toolbar class="app-topbar">
-  <div>
-    <button mat-button class="header-icons">
-      <mat-icon>menu</mat-icon>
-    </button>
-    <!-- segment when opened -->
-  </div>
+    <div>
+        <button mat-button class="header-icons" (click)="handleMenuClick()">
+            <mat-icon>{{ isNavbarOpen$() ? 'segment' : 'menu' }}</mat-icon>
+        </button>
+    </div>
 
-  <div>
-    <button mat-button class="header-icons">
-      <mat-icon>notifications_active</mat-icon>
-    </button>
-    <button mat-button class="header-icons">
-      <mat-icon>info</mat-icon>
-    </button>
-    <button mat-button class="header-icons">
-      <span>HR</span>
-    </button>
-  </div>
+    <div>
+        <button mat-button class="header-icons">
+            <mat-icon>notifications_active</mat-icon>
+        </button>
+        <button mat-button class="header-icons">
+            <mat-icon>info</mat-icon>
+        </button>
+        <button mat-button class="header-icons">
+            <span>HR</span>
+        </button>
+    </div>
 </mat-toolbar>
