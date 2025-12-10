@@ -1,0 +1,17 @@
+@import "colors";
+
+:root {
+  --white: #ffffff;
+  --black: #000000;
+
+  --text: #{$color-text};
+  --text-white: #{$color-background};
+
+  --primary: #{$color-primary};
+  --accent: #{$color-accent};
+  --alert: #{$color-alert};
+
+  --base-light: #{$color-base-01};
+  --base-dark: #{$color-base-02};
+  --base-darker: #{$color-base-03};
+}
