@@ -1,0 +1,13 @@
+.initials {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--accent);
+    color: var(--white);
+    font-size: var(--font-xl);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--lineheight-l);
+    border-radius: 50%;
+    height: 44px;
+    width: 44px;
+}

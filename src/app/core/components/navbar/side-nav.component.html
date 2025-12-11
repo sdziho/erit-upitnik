@@ -7,12 +7,21 @@
         [opened]="isNavbarOpen$()"
     >
         <mat-nav-list>
-            @for (route of routesList; track route) {
-                <a mat-list-item [routerLink]="route.route">
-                    <mat-icon>{{ route.icon }}</mat-icon>
-                    <span>{{ route.name }}</span>
-                </a>
-            }
+            <mat-list-item class="profile">
+                <app-profile-badge [name]="user$()"></app-profile-badge>
+                <app-flex-col class="user-info">
+                    <div class="title">{{ user$() }}</div>
+                    <div class="subtitle">{{ role$() }}</div>
+                </app-flex-col>
+            </mat-list-item>
+            <div class="links-wrapper">
+                @for (route of routesList; track route) {
+                    <a mat-list-item [routerLink]="route.route">
+                        <mat-icon>{{ route.icon }}</mat-icon>
+                        <span>{{ route.name }}</span>
+                    </a>
+                }
+            </div>
         </mat-nav-list>
     </mat-sidenav>
 </mat-sidenav-container>
