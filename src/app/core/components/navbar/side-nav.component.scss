@@ -20,17 +20,10 @@
         padding: 0px !important;
     }
 }
-.sidenav-container {
-    height: 100vh;
-}
-
 .sidenav {
-    margin-top: 56px; //height of the toolbar
+    padding-top: 56px; //height of the toolbar
     background-color: var(--white);
     width: 316px;
-    position: fixed;
-    top: 0;
-    left: 0;
     height: 100vh;
     box-shadow: 0px 0px 30px 0px #0000000d;
 }
