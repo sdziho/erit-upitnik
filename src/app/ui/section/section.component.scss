@@ -1,0 +1,14 @@
+.mat-expansion-panel-header {
+    height: 42px !important;
+    min-height: 42px !important;
+    padding: 0px 20px !important;
+    display: flex;
+    align-items: center;
+}
+
+.mat-expansion-panel-header-title,
+.mat-expansion-panel-header-description {
+    flex-grow: 0 !important;
+    flex-basis: auto !important;
+    margin-right: 12px !important;
+}

@@ -8,7 +8,7 @@ import { LayoutStore } from '../../store/layout.store'
 import { NavigationList, Routes } from '../../models/navigation.model'
 import { RouterModule } from '@angular/router'
 import { FlexColComponent } from '../../../ui/grid/flex-col/flex-col.component'
-import { ProfileBadgeComponent } from '../../../ui/badges/profile-badge.component'
+import { BadgeComponent } from '../../../ui/badges/badge.component'
 import { AuthService } from '../../services/auth.service'
 
 @Component({
@@ -24,7 +24,7 @@ import { AuthService } from '../../services/auth.service'
         MatListModule,
         RouterModule,
         FlexColComponent,
-        ProfileBadgeComponent,
+        BadgeComponent,
     ],
 })
 export class SideNavComponent {

@@ -8,7 +8,7 @@
     >
         <mat-nav-list>
             <mat-list-item class="profile">
-                <app-profile-badge [name]="user$()"></app-profile-badge>
+                <app-badge [text]="user$()"></app-badge>
                 <app-flex-col class="user-info">
                     <div class="title">{{ user$() }}</div>
                     <div class="subtitle">{{ role$() }}</div>

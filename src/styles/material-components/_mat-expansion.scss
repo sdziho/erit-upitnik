@@ -1,0 +1,17 @@
+.mat-expansion-panel-header,
+.mat-expansion-panel-header .mat-expansion-panel-header-title,
+.mat-expansion-panel-header .mat-expansion-panel-header-description {
+    background-color: var(--base-dark) !important;
+    color: var(--base-on-dark) !important;
+}
+
+.mat-expansion-panel,
+.mat-expansion-panel .mat-expansion-panel-header {
+    border-radius: 0 !important;
+}
+
+.mat-expansion-panel,
+.mat-expansion-panel-header,
+.mat-expansion-panel:not(.mat-mdc-accordion) {
+    box-shadow: none !important;
+}
