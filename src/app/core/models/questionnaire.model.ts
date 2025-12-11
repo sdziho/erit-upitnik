@@ -1,0 +1,36 @@
+export enum QuestionTypes {
+    SHORT_TEXT = 'Short Text',
+    LONG_TEXT = 'Long Text',
+    MULTIPLE_CHOICE = 'Multiple Choice',
+    CHECK_BOX = 'Check-Box',
+    DROP_DOWN = 'Drop-Down',
+    DATE = 'Date',
+    DOCUMENT = 'Document',
+}
+
+export enum QuestionnaireFormTypes {
+    SECTION = 'section',
+    QUESTION = 'question',
+    QUESTIONNAIRE = 'questionnaire',
+}
+
+export interface Answers {
+    text: string
+    correct: boolean
+}
+
+export interface Question {
+    text: string
+    type: QuestionTypes
+    answers: Answers[]
+}
+
+export interface Section {
+    id: string | null
+    name: string | null
+    questions: Question[]
+}
+
+export interface Questionnaire {
+    sections: Section[]
+}
