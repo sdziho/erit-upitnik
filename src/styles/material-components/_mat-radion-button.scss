@@ -1,0 +1,53 @@
+/* Unchecked border color */
+.mat-mdc-radio-button
+    .mdc-radio__native-control:enabled
+    ~ .mdc-radio__background
+    .mdc-radio__outer-circle {
+    border-color: var(--accent) !important;
+}
+
+/* Checked fill and border color */
+.mat-mdc-radio-button
+    .mdc-radio__native-control:checked
+    ~ .mdc-radio__background
+    .mdc-radio__inner-circle {
+    background-color: var(--accent) !important;
+    border-color: var(--accent) !important;
+}
+
+.mat-mdc-radio-button
+    .mdc-radio__native-control:checked
+    ~ .mdc-radio__background
+    .mdc-radio__outer-circle {
+    border-color: var(--accent) !important;
+}
+
+.mdc-radio {
+    color: var(--accent) !important;
+}
+
+.flagged-checkbox
+    .mdc-radio__native-control:enabled
+    ~ .mdc-radio__background
+    .mdc-radio__outer-circle {
+    border-color: var(--alert) !important;
+}
+
+.flagged-checkbox
+    .mdc-radio__native-control:checked
+    ~ .mdc-radio__background
+    .mdc-radio__inner-circle {
+    background-color: var(--alert) !important;
+    border-color: var(--alert) !important;
+}
+
+.flagged-checkbox
+    .mdc-radio__native-control:checked
+    ~ .mdc-radio__background
+    .mdc-radio__outer-circle {
+    border-color: var(--alert) !important;
+}
+
+.flagged-checkbox .mdc-radio {
+    color: var(--alert) !important;
+}

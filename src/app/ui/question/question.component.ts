@@ -4,7 +4,8 @@ import { BadgeComponent, BadgeTypes } from '../badges/badge.component'
 import { Answers, QuestionType } from '../../core/models/questionnaire.model'
 import { FlexColComponent } from '../grid/flex-col/flex-col.component'
 import { MatCheckboxModule } from '@angular/material/checkbox'
-import { NgClass } from '@angular/common'
+import { NgClass, NgTemplateOutlet } from '@angular/common'
+import { MatRadioButton, MatRadioGroup } from '@angular/material/radio'
 
 @Component({
     selector: 'app-question',
@@ -17,6 +18,9 @@ import { NgClass } from '@angular/common'
         FlexColComponent,
         MatCheckboxModule,
         NgClass,
+        MatRadioGroup,
+        MatRadioButton,
+        NgTemplateOutlet,
     ],
 })
 export class QuestionComponent {

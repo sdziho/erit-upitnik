@@ -5,6 +5,7 @@ import { SectionComponent } from '../../../ui/section/section.component'
 import { QuestionnaireStore } from '../../../core/store/questionnaire.store'
 import { toObservable } from '@angular/core/rxjs-interop'
 import { QuestionComponent } from '../../../ui/question/question.component'
+import { QuestionType } from '../../../core/models/questionnaire.model'
 
 @Component({
     selector: 'app-questionnaire',
@@ -22,7 +23,7 @@ export class QuestionnaireComponent implements OnInit {
     readonly #store = inject(QuestionnaireStore)
     questionnaireForm$: Signal<FormGroup> = this.#store.form$
     questionnaireFormObs$ = toObservable(this.#store.form$)
-
+    questionType = QuestionType.MULTIPLE_CHOICE
     answers = [
         {
             text: 'Donec ac odio tempor orci',
