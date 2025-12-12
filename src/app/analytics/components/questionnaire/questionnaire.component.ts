@@ -6,10 +6,10 @@ import { QuestionnaireStore } from '../../../core/store/questionnaire.store'
 import { toObservable } from '@angular/core/rxjs-interop'
 import { QuestionComponent } from '../../../ui/question/question.component'
 import { QuestionType } from '../../../core/models/questionnaire.model'
-import { MatFormField, MatLabel } from '@angular/material/form-field'
-import { MatInput } from '@angular/material/input'
-import { BadgeComponent, BadgeTypes } from '../../../ui/badges/badge.component'
+import { BadgeTypes } from '../../../ui/badges/badge.component'
 import { AddFieldComponent } from '../../../ui/add-field/add-field.component'
+import { FlexRowComponent } from '../../../ui/grid/flex-row/flex-row.component'
+import { AddToolbarComponent } from '../../../ui/add-toolbar/add-toolbar.component'
 
 @Component({
     selector: 'app-questionnaire',
@@ -21,11 +21,9 @@ import { AddFieldComponent } from '../../../ui/add-field/add-field.component'
         ReactiveFormsModule,
         SectionComponent,
         QuestionComponent,
-        MatFormField,
-        MatLabel,
-        MatInput,
-        BadgeComponent,
         AddFieldComponent,
+        FlexRowComponent,
+        AddToolbarComponent,
     ],
 })
 export class QuestionnaireComponent implements OnInit {

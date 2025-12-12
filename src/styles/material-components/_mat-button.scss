@@ -1,3 +1,22 @@
 .mdc-button {
-  min-width: 48px !important;
+    min-width: 48px !important;
+}
+
+button.mat-mdc-icon-button {
+    --mdc-icon-button-state-layer-size: 28px;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 28px !important;
+    height: 28px !important;
+    min-width: 0 !important;
+    min-height: 0 !important;
+    border-radius: 0 !important;
+}
+
+button.mat-mdc-icon-button .mat-mdc-button-touch-target {
+    display: none !important;
+}
+
+button.mat-mdc-icon-button .mdc-button__ripple {
+    display: none !important;
 }

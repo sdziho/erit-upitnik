@@ -23,3 +23,14 @@
 body {
     @extend .font-body;
 }
+
+mat-icon {
+    width: 28px !important;
+    height: 28px !important;
+    font-size: var(--font-2xl) !important;
+    margin: 0px;
+}
+
+.divider-line {
+    border: 0.5px solid var(--section-line);
+}

@@ -11,10 +11,10 @@
     >
     </app-section>
 }
-
-<app-add-field [form]="questionnaireForm$()"></app-add-field>
-<button type="button" (click)="addSection()">Add Section</button>
-<button type="submit">Submit</button>
+<app-flex-row class="add-section">
+    <app-add-field [form]="questionnaireForm$()"></app-add-field>
+    <app-add-toolbar (onAddButton)="addSection()"></app-add-toolbar>
+</app-flex-row>
 
 <!-- @for (section of sections.controls; track section; let i = $index) {
             <div [formGroupName]="i" class="section">

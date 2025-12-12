@@ -1,13 +1,6 @@
 import { Component, Input } from '@angular/core'
-import { MatExpansionModule } from '@angular/material/expansion'
 import { BadgeComponent, BadgeTypes } from '../badges/badge.component'
-import {
-    AbstractControl,
-    FormArray,
-    FormControl,
-    FormGroup,
-    ReactiveFormsModule,
-} from '@angular/forms'
+import { FormArray, FormGroup, ReactiveFormsModule } from '@angular/forms'
 import { MatFormField, MatLabel } from '@angular/material/form-field'
 import { MatInput } from '@angular/material/input'
 

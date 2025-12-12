@@ -1,8 +1,11 @@
+:host {
+    flex: 1;
+}
 .form-wrapper {
-    margin: 10px 0px;
     background-color: var(--base-light);
     border-radius: 4px;
-    padding: 10px 20px 10px 50px;
+    padding: 0px 20px 0px 50px;
+    min-height: 135px;
 
     .section {
         width: 100%;
