@@ -5,7 +5,7 @@ import { Answers, QuestionType } from '../../core/models/questionnaire.model'
 import { FlexColComponent } from '../grid/flex-col/flex-col.component'
 import { MatCheckboxModule } from '@angular/material/checkbox'
 import { NgClass, NgTemplateOutlet } from '@angular/common'
-import { MatRadioButton, MatRadioGroup } from '@angular/material/radio'
+import { MatRadioButton } from '@angular/material/radio'
 
 @Component({
     selector: 'app-question',
@@ -18,7 +18,6 @@ import { MatRadioButton, MatRadioGroup } from '@angular/material/radio'
         FlexColComponent,
         MatCheckboxModule,
         NgClass,
-        MatRadioGroup,
         MatRadioButton,
         NgTemplateOutlet,
     ],

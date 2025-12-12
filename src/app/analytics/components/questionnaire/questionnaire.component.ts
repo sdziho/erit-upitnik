@@ -6,6 +6,10 @@ import { QuestionnaireStore } from '../../../core/store/questionnaire.store'
 import { toObservable } from '@angular/core/rxjs-interop'
 import { QuestionComponent } from '../../../ui/question/question.component'
 import { QuestionType } from '../../../core/models/questionnaire.model'
+import { MatFormField, MatLabel } from '@angular/material/form-field'
+import { MatInput } from '@angular/material/input'
+import { BadgeComponent, BadgeTypes } from '../../../ui/badges/badge.component'
+import { AddFieldComponent } from '../../../ui/add-field/add-field.component'
 
 @Component({
     selector: 'app-questionnaire',
@@ -17,6 +21,11 @@ import { QuestionType } from '../../../core/models/questionnaire.model'
         ReactiveFormsModule,
         SectionComponent,
         QuestionComponent,
+        MatFormField,
+        MatLabel,
+        MatInput,
+        BadgeComponent,
+        AddFieldComponent,
     ],
 })
 export class QuestionnaireComponent implements OnInit {
@@ -24,6 +33,7 @@ export class QuestionnaireComponent implements OnInit {
     questionnaireForm$: Signal<FormGroup> = this.#store.form$
     questionnaireFormObs$ = toObservable(this.#store.form$)
     questionType = QuestionType.MULTIPLE_CHOICE
+    badgeType = BadgeTypes.SQUARE
     answers = [
         {
             text: 'Donec ac odio tempor orci',
@@ -63,10 +73,22 @@ export class QuestionnaireComponent implements OnInit {
 
     addSection(): void {
         this.#store.addSection()
+        this.addUniqueIdentifier('section')
     }
 
     addQuestion(section: FormGroup): void {
         this.#store.addQuestion(section)
+    }
+
+    addUniqueIdentifier(type: 'section' | 'question') {
+        if (type === 'section') {
+            const sectionLength = this.sections.value.length
+            this.sections.at(sectionLength - 1).setValue({
+                id: `S-${sectionLength.toString().padStart(3, '0')}`,
+                name: '',
+                questions: [],
+            })
+        }
     }
 
     submit(): void {

@@ -1,0 +1,30 @@
+@if (form && lastIndex >= 0) {
+    <div class="form-wrapper">
+        <form [formGroup]="form">
+            <div formArrayName="sections" class="section">
+                @for (
+                    section of sections.controls;
+                    track section;
+                    let i = $index
+                ) {
+                    @if (i === lastIndex) {
+                        <div [formGroupName]="i" class="section">
+                            <app-badge
+                                [text]="id"
+                                [type]="badgeType"
+                                [style]="{
+                                    color: 'black',
+                                    'background-color': 'transparent',
+                                }"
+                            ></app-badge>
+                            <mat-form-field appearance="fill">
+                                <mat-label>Section Name</mat-label>
+                                <input matInput formControlName="name" />
+                            </mat-form-field>
+                        </div>
+                    }
+                }
+            </div>
+        </form>
+    </div>
+}

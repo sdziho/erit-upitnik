@@ -1,0 +1,17 @@
+.form-wrapper {
+    margin: 10px 0px;
+    background-color: var(--base-light);
+    border-radius: 4px;
+    padding: 10px 20px 10px 50px;
+
+    .section {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        mat-form-field {
+            flex: 1;
+            min-width: 0;
+        }
+    }
+}

@@ -1,34 +1,38 @@
-<form [formGroup]="questionnaireForm$()" (ngSubmit)="submit()">
-    <app-question
-        id="Q-001"
-        question="Lacinia quis vel eros donec ac odio tempor orci"
-        [answers]="answers"
-        [type]="questionType"
-    ></app-question>
-    @for (section of sections.controls; track section; let i = $index) {
-        <app-section
-            [id]="section.value.id ?? i.toString()"
-            [title]="section.value.name ?? 'Title' + i.toString()"
-        >
-        </app-section>
-    }
-    <div formArrayName="sections" class="section">
-        @for (section of sections.controls; track section; let i = $index) {
+<app-question
+    id="Q-001"
+    question="Lacinia quis vel eros donec ac odio tempor orci"
+    [answers]="answers"
+    [type]="questionType"
+></app-question>
+@for (section of sections.controls; track section; let i = $index) {
+    <app-section
+        [id]="section.value.id ?? i.toString()"
+        [title]="section.value.name ?? 'Title' + i.toString()"
+    >
+    </app-section>
+}
+
+<app-add-field [form]="questionnaireForm$()"></app-add-field>
+<button type="button" (click)="addSection()">Add Section</button>
+<button type="submit">Submit</button>
+
+<!-- @for (section of sections.controls; track section; let i = $index) {
             <div [formGroupName]="i" class="section">
-                <h3>Section</h3>
-
-                <label>
-                    Section Name:
-                    <input formControlName="name" />
-                </label>
-
-                <label>
-                    Section ID:
-                    <input formControlName="id" />
-                </label>
+                <app-badge
+                    text="Q-001"
+                    [type]="badgeType"
+                    [style]="{
+                        color: 'black',
+                        'background-color': 'transparent',
+                    }"
+                ></app-badge>
+                <mat-form-field appearance="fill">
+                    <mat-label>Section Name</mat-label>
+                    <input matInput formControlName="name" />
+                </mat-form-field>
             </div>
 
-            <!-- @if (getQuestions(sections.at(i)).length > 0) {
+            @if (getQuestions(sections.at(i)).length > 0) {
                 <div formArrayName="questions">
                     @for (
                         question of getQuestions(section).controls;
@@ -67,9 +71,5 @@
 
             <button type="button" (click)="addQuestion(sections.at(i))"
                 >Add Question</button
-            > -->
-        }
-    </div>
-    <button type="button" (click)="addSection()">Add Section</button>
-    <button type="submit">Submit</button>
-</form>
+            >
+        }-->
