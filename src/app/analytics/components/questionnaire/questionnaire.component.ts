@@ -1,22 +1,48 @@
 import { Component, effect, inject, OnInit, Signal } from '@angular/core'
 import { FormGroup, FormArray, ReactiveFormsModule } from '@angular/forms'
-import { FormProviderService } from '../../../core/services/form-provider.service'
 import { CommonModule } from '@angular/common'
 import { SectionComponent } from '../../../ui/section/section.component'
 import { QuestionnaireStore } from '../../../core/store/questionnaire.store'
 import { toObservable } from '@angular/core/rxjs-interop'
+import { QuestionComponent } from '../../../ui/question/question.component'
 
 @Component({
     selector: 'app-questionnaire',
     templateUrl: './questionnaire.component.html',
     styleUrls: ['./questionnaire.component.scss'],
     standalone: true,
-    imports: [CommonModule, ReactiveFormsModule, SectionComponent],
+    imports: [
+        CommonModule,
+        ReactiveFormsModule,
+        SectionComponent,
+        QuestionComponent,
+    ],
 })
 export class QuestionnaireComponent implements OnInit {
     readonly #store = inject(QuestionnaireStore)
     questionnaireForm$: Signal<FormGroup> = this.#store.form$
     questionnaireFormObs$ = toObservable(this.#store.form$)
+
+    answers = [
+        {
+            text: 'Donec ac odio tempor orci',
+            correct: true,
+        },
+        {
+            text: 'Lacinia quis vel eros donec ac odio tempor orci',
+            correct: false,
+        },
+        {
+            text: 'Odio tempor orci',
+            correct: false,
+        },
+        {
+            text: 'Vel eros donec ac odio tempor orci',
+            correct: false,
+            flagged: true,
+            points: 1,
+        },
+    ]
 
     get sections() {
         return this.questionnaireForm$()?.get('sections') as FormArray
@@ -36,7 +62,6 @@ export class QuestionnaireComponent implements OnInit {
 
     addSection(): void {
         this.#store.addSection()
-        console.log(this.sections)
     }
 
     addQuestion(section: FormGroup): void {

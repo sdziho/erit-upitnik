@@ -1,5 +1,5 @@
 @if (type === 'Profile') {
-    <div class="initials">{{ text | initials }}</div>
+    <div class="initials" [ngStyle]="style">{{ text | initials }}</div>
 } @else if (type === 'Square') {
-    <div class="square">{{ text }}</div>
+    <div class="square" [ngStyle]="style">{{ text }}</div>
 }

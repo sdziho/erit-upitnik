@@ -1,4 +1,4 @@
-export enum QuestionTypes {
+export enum QuestionType {
     SHORT_TEXT = 'Short Text',
     LONG_TEXT = 'Long Text',
     MULTIPLE_CHOICE = 'Multiple Choice',
@@ -17,11 +17,13 @@ export enum QuestionnaireFormTypes {
 export interface Answers {
     text: string
     correct: boolean
+    flagged?: boolean
+    points?: number
 }
 
 export interface Question {
     text: string
-    type: QuestionTypes
+    type: QuestionType
     answers: Answers[]
 }
 

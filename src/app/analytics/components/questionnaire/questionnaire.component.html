@@ -1,4 +1,9 @@
 <form [formGroup]="questionnaireForm$()" (ngSubmit)="submit()">
+    <!-- <app-question
+        id="Q-001"
+        question="Lacinia quis vel eros donec ac odio tempor orci"
+        [answers]="answers"
+    ></app-question> -->
     @for (section of sections.controls; track section; let i = $index) {
         <app-section
             [id]="section.value.id ?? i.toString()"

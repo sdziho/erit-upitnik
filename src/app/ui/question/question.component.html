@@ -1,0 +1,28 @@
+<app-flex-col class="question-wrapper">
+    <div class="question-name">
+        <div class="question-id">{{ id }}</div>
+        <div class="question-text">{{ question }}</div>
+    </div>
+    <app-flex-col class="answers-wrapper">
+        @for (answer of answers; track answer) {
+            <mat-checkbox [ngClass]="{ 'flagged-checkbox': answer.flagged }">
+                <div class="checkbox-wrapper">
+                    <span>{{ answer.text }} </span>
+                    @if (answer?.points) {
+                        <app-badge
+                            [style]="{
+                                background: '#EBEBEB',
+                                color: 'black',
+                                'font-weight': '400',
+                                'font-size': '12px',
+                                height: 'auto',
+                            }"
+                            [type]="badgeType"
+                            [text]="`${answer?.points}pt`"
+                        ></app-badge>
+                    }
+                </div>
+            </mat-checkbox>
+        }
+    </app-flex-col>
+</app-flex-col>
