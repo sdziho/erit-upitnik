@@ -43,4 +43,13 @@ export class QuestionnaireStore {
             )
         )
     }
+
+    addAnswer(question: FormGroup) {
+        const answerArray = question?.get('answers') as FormArray
+        answerArray.push(
+            this.#formProvicerService.generateForm(
+                QuestionnaireFormTypes.ANSWERS
+            )
+        )
+    }
 }

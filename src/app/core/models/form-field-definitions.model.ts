@@ -17,11 +17,21 @@ export class QuestionnaireFormUtils {
         }
     }
 
-    public static question() {
+    public static question(formBuilder: FormBuilder) {
+        return {
+            id: new FormControl('', Validators.required),
+            text: new FormControl('', Validators.required),
+            type: new FormControl('multiple-choice'),
+            answers: formBuilder.array([]),
+        }
+    }
+    public static answer() {
         return {
             text: new FormControl('', Validators.required),
-            type: new FormControl('short-text'),
-            answers: new FormControl([], Validators.required),
+            correct: new FormControl(false, Validators.required),
+            flagged: new FormControl(false),
+            comment: new FormControl(''),
+            points: new FormControl(NaN),
         }
     }
 }

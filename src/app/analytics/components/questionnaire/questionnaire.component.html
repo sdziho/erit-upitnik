@@ -9,6 +9,15 @@
         [id]="section.value.id ?? i.toString()"
         [title]="section.value.name ?? 'Title' + i.toString()"
     >
+        <app-flex-row class="add-section">
+            <app-add-question
+                [section]="section"
+                [form]="questionnaireForm$()"
+            ></app-add-question>
+            <app-add-toolbar
+                (onAddButton)="addQuestion(section)"
+            ></app-add-toolbar>
+        </app-flex-row>
     </app-section>
 }
 <app-flex-row class="add-section">

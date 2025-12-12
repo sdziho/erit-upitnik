@@ -1,0 +1,53 @@
+@if (question) {
+    <div class="form-wrapper">
+        <form [formGroup]="question">
+            <div formArrayName="answers">
+                @for (
+                    question of answers.controls;
+                    track question;
+                    let i = $index
+                ) {
+                    <app-flex-row [formGroupName]="i" class="answer">
+                        <div class="option">
+                            <mat-checkbox formControlName="correct">
+                            </mat-checkbox>
+                            <mat-form-field appearance="fill">
+                                <mat-label>{{ 'Option ' + (i + 1) }}</mat-label>
+                                <input matInput formControlName="text" />
+                            </mat-form-field>
+                        </div>
+
+                        <div class="comment">
+                            <div class="option">
+                                <mat-checkbox
+                                    formControlName="flagged"
+                                    class="flagged-checkbox"
+                                >
+                                    Red Flag
+                                </mat-checkbox>
+
+                                <mat-form-field appearance="fill">
+                                    <mat-label>Comment</mat-label>
+                                    <input
+                                        matInput
+                                        type="text"
+                                        formControlName="comment"
+                                    />
+                                </mat-form-field>
+                            </div>
+
+                            <mat-form-field appearance="fill">
+                                <mat-label>Points</mat-label>
+                                <input
+                                    matInput
+                                    type="number"
+                                    formControlName="points"
+                                />
+                            </mat-form-field>
+                        </div>
+                    </app-flex-row>
+                }
+            </div>
+        </form>
+    </div>
+}

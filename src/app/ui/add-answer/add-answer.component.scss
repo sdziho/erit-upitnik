@@ -1,0 +1,39 @@
+:host {
+    flex: 1;
+    --mdc-checkbox-state-layer-size: 32px;
+}
+.form-wrapper {
+    background-color: var(--base-light);
+    border-radius: 4px;
+    padding: 0px 20px 0px 50px;
+    min-height: 135px;
+
+    .answers {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        mat-form-field {
+            flex: 1;
+            min-width: 0;
+        }
+    }
+    .answer {
+        gap: 33px;
+    }
+    .option {
+        flex: 1;
+        align-items: center;
+        display: flex;
+        gap: 8px;
+        mat-form-field {
+            flex: 1;
+        }
+    }
+    .comment {
+        flex: 1;
+        display: flex;
+        flex-direction: row;
+        gap: 8px;
+    }
+}

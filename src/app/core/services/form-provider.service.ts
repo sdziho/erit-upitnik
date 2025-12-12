@@ -21,7 +21,11 @@ export class FormProviderService {
                 ) as FormGroup
             case 'question':
                 return this.#formBuilder.group(
-                    QuestionnaireFormUtils.question()
+                    QuestionnaireFormUtils.question(this.#formBuilder)
+                ) as FormGroup
+            case 'answers':
+                return this.#formBuilder.group(
+                    QuestionnaireFormUtils.answer()
                 ) as FormGroup
             default:
                 return this.#formBuilder.group(

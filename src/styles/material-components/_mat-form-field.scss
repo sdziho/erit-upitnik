@@ -1,4 +1,10 @@
 .mat-mdc-form-field-infix {
     min-height: 0px !important;
     padding-bottom: 4px !important;
+    margin-top: 8px !important;
+}
+
+mat-form-field .mat-mdc-floating-label {
+    font-size: var(--font-m) !important;
+    font-weight: var(--font-weight-regular) !important;
 }

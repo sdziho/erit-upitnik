@@ -12,6 +12,7 @@ export enum QuestionnaireFormTypes {
     SECTION = 'section',
     QUESTION = 'question',
     QUESTIONNAIRE = 'questionnaire',
+    ANSWERS = 'answers',
 }
 
 export interface Answers {
