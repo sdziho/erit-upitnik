@@ -1,14 +1,21 @@
-<app-question
+<!-- <app-question
     id="Q-001"
     question="Lacinia quis vel eros donec ac odio tempor orci"
     [answers]="answers"
     [type]="questionType"
-></app-question>
+></app-question> -->
 @for (section of sections.controls; track section; let i = $index) {
     <app-section
         [id]="section.value.id ?? i.toString()"
         [title]="section.value.name ?? 'Title' + i.toString()"
     >
+        @for (
+            question of getQuestions(section).controls;
+            track question;
+            let j = $index
+        ) {
+            <app-question [questionForm]="question"></app-question>
+        }
         <app-flex-row class="add-section">
             <app-add-question
                 [section]="section"

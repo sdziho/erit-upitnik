@@ -6,6 +6,7 @@ import { FlexColComponent } from '../grid/flex-col/flex-col.component'
 import { MatCheckboxModule } from '@angular/material/checkbox'
 import { NgClass, NgTemplateOutlet } from '@angular/common'
 import { MatRadioButton } from '@angular/material/radio'
+import { FormGroup } from '@angular/forms'
 
 @Component({
     selector: 'app-question',
@@ -24,8 +25,19 @@ import { MatRadioButton } from '@angular/material/radio'
 })
 export class QuestionComponent {
     badgeType = BadgeTypes.SQUARE
-    @Input() id!: string
-    @Input() question!: string
-    @Input() answers!: Answers[]
-    @Input() type!: QuestionType
+
+    @Input() questionForm!: FormGroup
+
+    get id() {
+        return this.questionForm.get('id')?.value
+    }
+    get text() {
+        return this.questionForm.get('text')?.value
+    }
+    get answers() {
+        return this.questionForm.get('answers')?.value
+    }
+    get type() {
+        return this.questionForm.get('type')?.value
+    }
 }

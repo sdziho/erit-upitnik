@@ -21,7 +21,7 @@ export class QuestionnaireFormUtils {
         return {
             id: new FormControl('', Validators.required),
             text: new FormControl('', Validators.required),
-            type: new FormControl('multiple-choice'),
+            type: new FormControl('Check-Box'),
             answers: formBuilder.array([]),
         }
     }

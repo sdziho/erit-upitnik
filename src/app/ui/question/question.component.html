@@ -1,45 +1,50 @@
 <app-flex-col class="question-wrapper">
-    <div class="question-name">
-        <div class="question-id">{{ id }}</div>
-        <div class="question-text">{{ question }}</div>
-    </div>
-    <app-flex-col class="answers-wrapper">
-        @for (answer of answers; track answer) {
-            @if (type === 'Check-Box') {
-                <mat-checkbox
-                    [ngClass]="{ 'flagged-checkbox': answer.flagged }"
-                >
-                    <ng-container
-                        *ngTemplateOutlet="answerContent"
-                    ></ng-container>
-                </mat-checkbox>
-            } @else if (type === 'Multiple Choice') {
-                <mat-radio-button
-                    [ngClass]="{ 'flagged-checkbox': answer.flagged }"
-                >
-                    <ng-container
-                        *ngTemplateOutlet="answerContent"
-                    ></ng-container>
-                </mat-radio-button>
+    @if (text) {
+        <div class="question-name">
+            <div class="question-id">{{ id }}</div>
+            <div class="question-text">{{ text }}</div>
+        </div>
+        <app-flex-col class="answers-wrapper">
+            @for (answer of answers; track answer) {
+                <!-- For basic purposes, we will check if text is present to show options,
+                    otherwise we should create required field checker 
+                 -->
+                @if (type === 'Check-Box' && answer.text) {
+                    <mat-checkbox
+                        [ngClass]="{ 'flagged-checkbox': answer.flagged }"
+                    >
+                        <ng-container
+                            *ngTemplateOutlet="answerContent"
+                        ></ng-container>
+                    </mat-checkbox>
+                } @else if (type === 'Multiple Choice' && answer.text) {
+                    <mat-radio-button
+                        [ngClass]="{ 'flagged-checkbox': answer.flagged }"
+                    >
+                        <ng-container
+                            *ngTemplateOutlet="answerContent"
+                        ></ng-container>
+                    </mat-radio-button>
+                }
+                <ng-template #answerContent>
+                    <div class="checkbox-wrapper">
+                        <span>{{ answer.text }}</span>
+                        @if (answer?.points) {
+                            <app-badge
+                                [style]="{
+                                    background: '#EBEBEB',
+                                    color: 'black',
+                                    'font-weight': '400',
+                                    'font-size': '12px',
+                                    height: 'auto',
+                                }"
+                                [type]="badgeType"
+                                [text]="`${answer?.points}pt`"
+                            ></app-badge>
+                        }
+                    </div>
+                </ng-template>
             }
-            <ng-template #answerContent>
-                <div class="checkbox-wrapper">
-                    <span>{{ answer.text }}</span>
-                    @if (answer?.points) {
-                        <app-badge
-                            [style]="{
-                                background: '#EBEBEB',
-                                color: 'black',
-                                'font-weight': '400',
-                                'font-size': '12px',
-                                height: 'auto',
-                            }"
-                            [type]="badgeType"
-                            [text]="`${answer?.points}pt`"
-                        ></app-badge>
-                    }
-                </div>
-            </ng-template>
-        }
-    </app-flex-col>
+        </app-flex-col>
+    }
 </app-flex-col>
