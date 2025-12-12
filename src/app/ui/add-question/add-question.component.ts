@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core'
+import { Component, EventEmitter, Input, Output } from '@angular/core'
 import { BadgeComponent, BadgeTypes } from '../badges/badge.component'
 import {
     AbstractControl,
@@ -9,7 +9,8 @@ import {
 import { MatFormField, MatLabel } from '@angular/material/form-field'
 import { MatInput } from '@angular/material/input'
 import { AddAnswerComponent } from '../add-answer/add-answer.component'
-import { FlexColComponent } from '../grid/flex-col/flex-col.component'
+import { MatIcon } from '@angular/material/icon'
+import { MatIconButton } from '@angular/material/button'
 
 @Component({
     selector: 'app-add-question',
@@ -23,13 +24,17 @@ import { FlexColComponent } from '../grid/flex-col/flex-col.component'
         MatInput,
         MatLabel,
         AddAnswerComponent,
-        FlexColComponent,
+        MatIcon,
+        MatIconButton,
     ],
 })
 export class AddQuestionComponent {
+    @Output() onAddOption: EventEmitter<any> = new EventEmitter<any>()
     @Input() type!: string
     @Input() section!: FormGroup
     @Input() form!: FormGroup
+
+    badgeType = BadgeTypes.SQUARE
 
     get questions() {
         return this.section?.get('questions') as FormArray<FormGroup<any>>
@@ -47,5 +52,7 @@ export class AddQuestionComponent {
         return question.get('answers') as FormArray
     }
 
-    badgeType = BadgeTypes.SQUARE
+    handleAddOptionClick(question: FormGroup) {
+        this.onAddOption.emit(question)
+    }
 }

@@ -8,7 +8,7 @@ import { LayoutStore } from '../../store/layout.store'
 import { NavigationList, Routes } from '../../models/navigation.model'
 import { RouterModule } from '@angular/router'
 import { FlexColComponent } from '../../../ui/grid/flex-col/flex-col.component'
-import { BadgeComponent } from '../../../ui/badges/badge.component'
+import { BadgeComponent, BadgeTypes } from '../../../ui/badges/badge.component'
 import { AuthService } from '../../services/auth.service'
 
 @Component({
@@ -30,6 +30,8 @@ import { AuthService } from '../../services/auth.service'
 export class SideNavComponent {
     readonly #layoutStore = inject(LayoutStore)
     readonly #authService = inject(AuthService)
+
+    badgeType = BadgeTypes.PROFILE
     isNavbarOpen$: Signal<boolean> = this.#layoutStore.isNavbarOpen$
     routesList: Routes[] = NavigationList
     user$: Signal<string | null> = this.#authService.user$

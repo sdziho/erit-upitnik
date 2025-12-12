@@ -1,14 +1,5 @@
-<!-- <app-question
-    id="Q-001"
-    question="Lacinia quis vel eros donec ac odio tempor orci"
-    [answers]="answers"
-    [type]="questionType"
-></app-question> -->
 @for (section of sections.controls; track section; let i = $index) {
-    <app-section
-        [id]="section.value.id ?? i.toString()"
-        [title]="section.value.name ?? 'Title' + i.toString()"
-    >
+    <app-section [id]="section.value.id" [title]="section.value.name">
         @for (
             question of getQuestions(section).controls;
             track question;
@@ -16,10 +7,11 @@
         ) {
             <app-question [questionForm]="question"></app-question>
         }
-        <app-flex-row class="add-section">
+        <app-flex-row class="add-field">
             <app-add-question
                 [section]="section"
                 [form]="questionnaireForm$()"
+                (onAddOption)="addAnswer($event)"
             ></app-add-question>
             <app-add-toolbar
                 (onAddButton)="addQuestion(section)"
@@ -27,65 +19,7 @@
         </app-flex-row>
     </app-section>
 }
-<app-flex-row class="add-section">
+<app-flex-row class="add-field">
     <app-add-field [form]="questionnaireForm$()"></app-add-field>
     <app-add-toolbar (onAddButton)="addSection()"></app-add-toolbar>
 </app-flex-row>
-
-<!-- @for (section of sections.controls; track section; let i = $index) {
-            <div [formGroupName]="i" class="section">
-                <app-badge
-                    text="Q-001"
-                    [type]="badgeType"
-                    [style]="{
-                        color: 'black',
-                        'background-color': 'transparent',
-                    }"
-                ></app-badge>
-                <mat-form-field appearance="fill">
-                    <mat-label>Section Name</mat-label>
-                    <input matInput formControlName="name" />
-                </mat-form-field>
-            </div>
-
-            @if (getQuestions(sections.at(i)).length > 0) {
-                <div formArrayName="questions">
-                    @for (
-                        question of getQuestions(section).controls;
-                        track question;
-                        let j = $index
-                    ) {
-                        <div [formGroupName]="j" class="question">
-                            <h4>Question {{ j + 1 }}</h4>
-
-                            <label>
-                                Text:
-                                <input formControlName="text" />
-                            </label>
-
-                            <label>
-                                Type:
-                                <select formControlName="type">
-                                    <option value="short-text"
-                                        >Short Text</option
-                                    >
-                                    <option value="long-text">Long Text</option>
-                                    <option value="multiple-choice"
-                                        >Multiple Choice</option
-                                    >
-                                </select>
-                            </label>
-
-                            <label>
-                                Answers (comma-separated):
-                                <input [formControlName]="'answers'" />
-                            </label>
-                        </div>
-                    }
-                </div>
-            }
-
-            <button type="button" (click)="addQuestion(sections.at(i))"
-                >Add Question</button
-            >
-        }-->

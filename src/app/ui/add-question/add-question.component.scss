@@ -17,4 +17,12 @@
             min-width: 0;
         }
     }
+    .add-option {
+        margin-left: 50px;
+        display: flex;
+        align-items: center;
+        padding: 10px 5px;
+        gap: 10px;
+        color: var(--primary);
+    }
 }

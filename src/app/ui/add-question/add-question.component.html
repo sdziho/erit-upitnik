@@ -23,6 +23,15 @@
                             </mat-form-field>
                         </div>
                         <app-add-answer [question]="question"></app-add-answer>
+                        <div class="add-option">
+                            <button
+                                mat-icon-button
+                                (click)="handleAddOptionClick(question)"
+                            >
+                                <mat-icon>add_circle</mat-icon>
+                            </button>
+                            <span>Add Option</span>
+                        </div>
                     }
                 }
             </div>

@@ -1,16 +1,9 @@
 import { Component, effect, inject, OnInit, Signal } from '@angular/core'
-import {
-    FormGroup,
-    FormArray,
-    ReactiveFormsModule,
-    AbstractControl,
-} from '@angular/forms'
+import { FormGroup, FormArray, ReactiveFormsModule } from '@angular/forms'
 import { CommonModule } from '@angular/common'
 import { SectionComponent } from '../../../ui/section/section.component'
 import { QuestionnaireStore } from '../../../core/store/questionnaire.store'
-import { toObservable } from '@angular/core/rxjs-interop'
 import { QuestionComponent } from '../../../ui/question/question.component'
-import { QuestionType } from '../../../core/models/questionnaire.model'
 import { BadgeTypes } from '../../../ui/badges/badge.component'
 import { AddFieldComponent } from '../../../ui/add-field/add-field.component'
 import { FlexRowComponent } from '../../../ui/grid/flex-row/flex-row.component'
@@ -36,29 +29,7 @@ import { AddQuestionComponent } from '../../../ui/add-question/add-question.comp
 export class QuestionnaireComponent implements OnInit {
     readonly #store = inject(QuestionnaireStore)
     questionnaireForm$: Signal<FormGroup> = this.#store.form$
-    questionnaireFormObs$ = toObservable(this.#store.form$)
-    questionType = QuestionType.MULTIPLE_CHOICE
     badgeType = BadgeTypes.SQUARE
-    answers = [
-        {
-            text: 'Donec ac odio tempor orci',
-            correct: true,
-        },
-        {
-            text: 'Lacinia quis vel eros donec ac odio tempor orci',
-            correct: false,
-        },
-        {
-            text: 'Odio tempor orci',
-            correct: false,
-        },
-        {
-            text: 'Vel eros donec ac odio tempor orci',
-            correct: false,
-            flagged: true,
-            points: 1,
-        },
-    ]
 
     get sections() {
         return this.questionnaireForm$()?.get('sections') as FormArray<
@@ -77,6 +48,7 @@ export class QuestionnaireComponent implements OnInit {
     getQuestions(section: FormGroup) {
         return section?.get('questions') as FormArray<FormGroup<any>>
     }
+
     getAnswer(question: FormGroup) {
         return question?.get('answers')
     }
@@ -95,6 +67,10 @@ export class QuestionnaireComponent implements OnInit {
         this.#store.addAnswer(lastQuestion)
     }
 
+    addAnswer(question: FormGroup) {
+        this.#store.addAnswer(question)
+    }
+
     addUniqueSectionIdentifier() {
         const sectionLength = this.sections.value.length
         this.sections.at(sectionLength - 1).setValue({
@@ -107,15 +83,9 @@ export class QuestionnaireComponent implements OnInit {
         questionsNumber: number,
         lastQuestion: FormGroup
     ) {
-        console.log('qqq', lastQuestion)
         lastQuestion
             .get('id')
             ?.setValue(`Q-${questionsNumber.toString().padStart(3, '0')}`)
-        /* lastQuestion.at(questionsNumber - 1).setValue({
-            id: `Q-${questionsNumber.toString().padStart(3, '0')}`,
-            name: '',
-            questions: [],
-        }) */
     }
 
     submit(): void {

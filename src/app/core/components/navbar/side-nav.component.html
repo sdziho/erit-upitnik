@@ -1,14 +1,16 @@
 <mat-sidenav-container class="container">
     <mat-sidenav
         mode="side"
-        opened
         class="sidenav"
         fixedInViewport="true"
         [opened]="isNavbarOpen$()"
     >
         <mat-nav-list>
             <mat-list-item class="profile">
-                <app-badge [text]="user$()"></app-badge>
+                <app-badge
+                    [text]="user$() ?? ''"
+                    [type]="badgeType"
+                ></app-badge>
                 <app-flex-col class="user-info">
                     <div class="title">{{ user$() }}</div>
                     <div class="subtitle">{{ role$() }}</div>
