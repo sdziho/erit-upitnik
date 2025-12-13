@@ -1,6 +1,6 @@
 <app-flex-col class="question-wrapper">
     @if (text) {
-        <div class="question-name">
+        <div class="gap-10 question-name">
             <div class="question-id">{{ id }}</div>
             <div class="question-text">{{ text }}</div>
         </div>
@@ -27,7 +27,7 @@
                     </mat-radio-button>
                 }
                 <ng-template #answerContent>
-                    <div class="checkbox-wrapper">
+                    <div class="f--row-c gap-10">
                         <span>{{ answer.text }}</span>
                         @if (answer?.points) {
                             <app-badge

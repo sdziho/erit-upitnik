@@ -8,7 +8,7 @@
                     let i = $index
                 ) {
                     <app-flex-row [formGroupName]="i" class="answer">
-                        <div class="option">
+                        <div class="f--row-c gap-8 option">
                             <mat-checkbox formControlName="correct">
                             </mat-checkbox>
                             <mat-form-field appearance="fill">
@@ -17,8 +17,8 @@
                             </mat-form-field>
                         </div>
 
-                        <div class="comment">
-                            <div class="option">
+                        <div class="gap-8 comment">
+                            <div class="f--row-c gap-8 option">
                                 <mat-checkbox
                                     formControlName="flagged"
                                     class="flagged-checkbox"

@@ -7,7 +7,7 @@
         ) {
             <app-question [questionForm]="question"></app-question>
         }
-        <app-flex-row class="add-field">
+        <app-flex-row class="gap-10 add-field">
             <app-add-question
                 [section]="section"
                 [form]="questionnaireForm$()"
@@ -19,7 +19,7 @@
         </app-flex-row>
     </app-section>
 }
-<app-flex-row class="add-field">
+<app-flex-row class="gap-10 add-field">
     <app-add-field [form]="questionnaireForm$()"></app-add-field>
     <app-add-toolbar (onAddButton)="addSection()"></app-add-toolbar>
 </app-flex-row>

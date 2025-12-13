@@ -1,0 +1,19 @@
+.f--row-c {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.f--col-c {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+$gaps: 2, 4, 6, 8, 10, 12;
+
+@each $gap in $gaps {
+    .gap-#{$gap} {
+        gap: #{$gap}px;
+    }
+}

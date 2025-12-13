@@ -8,7 +8,10 @@
                     let i = $index
                 ) {
                     @if (i === lastIndex) {
-                        <div [formGroupName]="i" class="question">
+                        <div
+                            [formGroupName]="i"
+                            class="f--row-c gap-10 question"
+                        >
                             <app-badge
                                 [text]="id"
                                 [type]="badgeType"
@@ -23,7 +26,7 @@
                             </mat-form-field>
                         </div>
                         <app-add-answer [question]="question"></app-add-answer>
-                        <div class="add-option">
+                        <div class="f--row-c gap-10 add-option">
                             <button
                                 mat-icon-button
                                 (click)="handleAddOptionClick(question)"

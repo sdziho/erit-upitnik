@@ -1,14 +1,17 @@
 @if (form && lastIndex >= 0) {
     <div class="form-wrapper">
         <form [formGroup]="form">
-            <div formArrayName="sections" class="section">
+            <div formArrayName="sections" class="f--row-c gap-10 section">
                 @for (
                     section of sections.controls;
                     track section;
                     let i = $index
                 ) {
                     @if (i === lastIndex) {
-                        <div [formGroupName]="i" class="section">
+                        <div
+                            [formGroupName]="i"
+                            class="f--row-c gap-10 section"
+                        >
                             <app-badge
                                 [text]="id"
                                 [type]="badgeType"

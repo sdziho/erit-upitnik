@@ -1,7 +1,5 @@
 .initials {
-    display: flex;
     justify-content: center;
-    align-items: center;
     background-color: var(--accent);
     color: var(--white);
     font-size: var(--font-xl);
@@ -13,9 +11,7 @@
 }
 
 .square {
-    display: flex;
     justify-content: center;
-    align-items: center;
     background-color: var(--accent);
     font-weight: var(--font-weight-bold);
     color: var(--white);
