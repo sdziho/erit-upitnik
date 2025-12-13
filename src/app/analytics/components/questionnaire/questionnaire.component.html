@@ -8,20 +8,34 @@
             ) {
                 <app-question [questionForm]="question"></app-question>
             }
-            <app-flex-row class="gap-10 add-field">
-                <app-add-question
-                    [section]="section"
-                    [form]="questionnaireForm$()"
-                    (onAddOption)="addAnswer($event)"
-                ></app-add-question>
-                <app-add-toolbar
-                    (onAddButton)="addQuestion(section)"
-                ></app-add-toolbar>
-            </app-flex-row>
+            @if (getQuestions(section).controls.length === 0) {
+                <app-no-data-page
+                    text="No Question Available"
+                    buttonText="Add Question"
+                    (onButtonAction)="addField($event, section)"
+                ></app-no-data-page>
+            } @else {
+                <app-flex-row class="gap-10 add-field">
+                    <app-add-question
+                        [section]="section"
+                        (onAddOption)="addAnswer($event)"
+                    ></app-add-question>
+                    <app-add-toolbar
+                        (onAddButton)="addField($event, section)"
+                    ></app-add-toolbar>
+                </app-flex-row>
+            }
         </app-section>
     }
 }
-<app-flex-row class="gap-10 add-field">
-    <app-add-field [form]="questionnaireForm$()"></app-add-field>
-    <app-add-toolbar (onAddButton)="addSection()"></app-add-toolbar>
-</app-flex-row>
+@if (sections.controls.length === 0) {
+    <app-no-data-page
+        text="No Section Available"
+        buttonText="Add Section"
+        (onButtonAction)="addField($event)"
+    ></app-no-data-page>
+} @else {
+    <app-flex-row class="add-field">
+        <app-add-field [form]="questionnaireForm$()"></app-add-field>
+    </app-flex-row>
+}

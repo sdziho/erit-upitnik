@@ -1,8 +1,9 @@
-import { Component, EventEmitter, Output } from '@angular/core'
+import { Component, EventEmitter, Input, Output } from '@angular/core'
 import { FlexColComponent } from '../grid/flex-col/flex-col.component'
 import { MatIcon } from '@angular/material/icon'
 import { MatIconButton } from '@angular/material/button'
 import { MatMenuTrigger, MatMenu, MatMenuItem } from '@angular/material/menu'
+import { NgStyle } from '@angular/common'
 
 @Component({
     selector: 'app-add-toolbar',
@@ -16,10 +17,12 @@ import { MatMenuTrigger, MatMenu, MatMenuItem } from '@angular/material/menu'
         MatMenu,
         MatMenuTrigger,
         MatMenuItem,
+        NgStyle,
     ],
 })
 export class AddToolbarComponent {
     @Output() onAddButton: EventEmitter<any> = new EventEmitter<any>()
+    @Input() addMode: boolean = false
 
     matMenuSections: { icon: string; name: string }[][] = [
         [
@@ -67,8 +70,6 @@ export class AddToolbarComponent {
     ]
 
     handleAddButton(menuButton: { icon: string; name: string }) {
-        if (menuButton.name === 'New Section') {
-            this.onAddButton.emit()
-        }
+        this.onAddButton.emit(menuButton.name)
     }
 }

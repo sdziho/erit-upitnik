@@ -9,6 +9,7 @@ import { AddFieldComponent } from '../../../ui/add-field/add-field.component'
 import { FlexRowComponent } from '../../../ui/grid/flex-row/flex-row.component'
 import { AddToolbarComponent } from '../../../ui/add-toolbar/add-toolbar.component'
 import { AddQuestionComponent } from '../../../ui/add-question/add-question.component'
+import { NoDataPageComponent } from '../../../ui/no-data-page/no-data-page.component'
 
 @Component({
     selector: 'app-questionnaire',
@@ -24,6 +25,7 @@ import { AddQuestionComponent } from '../../../ui/add-question/add-question.comp
         FlexRowComponent,
         AddToolbarComponent,
         AddQuestionComponent,
+        NoDataPageComponent,
     ],
 })
 export class QuestionnaireComponent implements OnInit {
@@ -46,7 +48,6 @@ export class QuestionnaireComponent implements OnInit {
     }
     ngOnInit(): void {
         this.#store.initForm()
-        this.addSection()
     }
 
     getQuestions(section: FormGroup) {
@@ -92,7 +93,11 @@ export class QuestionnaireComponent implements OnInit {
             ?.setValue(`Q-${questionsNumber.toString().padStart(3, '0')}`)
     }
 
-    submit(): void {
-        console.log(this.questionnaireForm$()?.value)
+    addField(fieldName: string, section: FormGroup | null = null) {
+        if (fieldName === 'Multiple Choice' && section) {
+            this.addQuestion(section)
+        } else if (fieldName === 'New Section') {
+            this.addSection()
+        }
     }
 }

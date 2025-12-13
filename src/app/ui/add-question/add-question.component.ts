@@ -32,7 +32,6 @@ export class AddQuestionComponent {
     @Output() onAddOption: EventEmitter<any> = new EventEmitter<any>()
     @Input() type!: string
     @Input() section!: FormGroup
-    @Input() form!: FormGroup
 
     badgeType = BadgeTypes.SQUARE
 

@@ -1,14 +1,21 @@
-<app-flex-col class="gap-10 icon-wrapper">
+<app-flex-col
+    class="gap-10 icon-wrapper"
+    [ngStyle]="{
+        'box-shadow': addMode ? 'none' : '0px 4px 15px 0px #00000026',
+    }"
+>
     <button mat-icon-button [matMenuTriggerFor]="menu">
         <mat-icon>add_circle</mat-icon>
     </button>
-    <div class="divider-line"></div>
-    <button mat-icon-button>
-        <mat-icon>content_copy</mat-icon>
-    </button>
-    <button mat-icon-button>
-        <mat-icon>device_hub</mat-icon>
-    </button>
+    @if (!addMode) {
+        <div class="divider-line"></div>
+        <button mat-icon-button>
+            <mat-icon>content_copy</mat-icon>
+        </button>
+        <button mat-icon-button>
+            <mat-icon>device_hub</mat-icon>
+        </button>
+    }
 </app-flex-col>
 
 <mat-menu #menu="matMenu" panelClass="items-menu">
