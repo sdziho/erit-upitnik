@@ -10,6 +10,7 @@ import { FlexRowComponent } from '../../../ui/grid/flex-row/flex-row.component'
 import { AddToolbarComponent } from '../../../ui/add-toolbar/add-toolbar.component'
 import { AddQuestionComponent } from '../../../ui/add-question/add-question.component'
 import { NoDataPageComponent } from '../../../ui/no-data-page/no-data-page.component'
+import { QuestionType } from '../../../core/models/questionnaire.model'
 
 @Component({
     selector: 'app-questionnaire',
@@ -63,12 +64,13 @@ export class QuestionnaireComponent implements OnInit {
         this.addUniqueSectionIdentifier()
     }
 
-    addQuestion(section: FormGroup): void {
+    addQuestion(section: FormGroup, type: QuestionType): void {
         this.#store.addQuestion(section as FormGroup)
         //add one blank answer to latest question
         const questionsNumber = this.getQuestions(section).controls.length
         const lastQuestion = this.getQuestions(section).at(questionsNumber - 1)
         this.addUniqueQuestionIdentifier(questionsNumber, lastQuestion)
+        lastQuestion.get('type')?.setValue(type)
         this.#store.addAnswer(lastQuestion)
     }
 
@@ -94,9 +96,14 @@ export class QuestionnaireComponent implements OnInit {
     }
 
     addField(fieldName: string, section: FormGroup | null = null) {
-        if (fieldName === 'Multiple Choice' && section) {
-            this.addQuestion(section)
-        } else if (fieldName === 'New Section') {
+        if (
+            [QuestionType.MULTIPLE_CHOICE, QuestionType.CHECK_BOX].includes(
+                fieldName as QuestionType
+            ) &&
+            section
+        ) {
+            this.addQuestion(section, fieldName as QuestionType)
+        } else if (fieldName === QuestionType.NEW_SECTION) {
             this.addSection()
         }
     }

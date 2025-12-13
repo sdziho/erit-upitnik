@@ -5,6 +5,7 @@ import { MatFormField, MatLabel } from '@angular/material/form-field'
 import { MatInput } from '@angular/material/input'
 import { MatCheckbox } from '@angular/material/checkbox'
 import { FlexRowComponent } from '../grid/flex-row/flex-row.component'
+import { MatRadioButton } from '@angular/material/radio'
 
 @Component({
     selector: 'app-add-answer',
@@ -18,11 +19,15 @@ import { FlexRowComponent } from '../grid/flex-row/flex-row.component'
         MatLabel,
         MatCheckbox,
         FlexRowComponent,
+        MatRadioButton,
     ],
 })
 export class AddAnswerComponent {
-    @Input() type!: string
     @Input() question!: FormGroup
+
+    get type() {
+        return this.question?.get('type')?.value
+    }
 
     get answers() {
         return this.question?.get('answers') as FormArray

@@ -1,4 +1,5 @@
 export enum QuestionType {
+    NEW_SECTION = 'New Section',
     SHORT_TEXT = 'Short Text',
     LONG_TEXT = 'Long Text',
     MULTIPLE_CHOICE = 'Multiple Choice',

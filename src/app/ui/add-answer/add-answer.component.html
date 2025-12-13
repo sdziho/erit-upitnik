@@ -9,8 +9,13 @@
                 ) {
                     <app-flex-row [formGroupName]="i" class="answer">
                         <div class="f--row-c gap-8 option">
-                            <mat-checkbox formControlName="correct">
-                            </mat-checkbox>
+                            @if (type === 'Multiple Choice') {
+                                <mat-radio-button></mat-radio-button>
+                            } @else if (type === 'Check-Box') {
+                                <mat-checkbox formControlName="correct">
+                                </mat-checkbox>
+                            }
+
                             <mat-form-field appearance="fill">
                                 <mat-label>{{ 'Option ' + (i + 1) }}</mat-label>
                                 <input matInput formControlName="text" />

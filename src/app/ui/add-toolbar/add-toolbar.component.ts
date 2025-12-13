@@ -4,6 +4,7 @@ import { MatIcon } from '@angular/material/icon'
 import { MatIconButton } from '@angular/material/button'
 import { MatMenuTrigger, MatMenu, MatMenuItem } from '@angular/material/menu'
 import { NgStyle } from '@angular/common'
+import { QuestionType } from '../../core/models/questionnaire.model'
 
 @Component({
     selector: 'app-add-toolbar',
@@ -28,43 +29,43 @@ export class AddToolbarComponent {
         [
             {
                 icon: 'apps',
-                name: 'New Section',
+                name: QuestionType.NEW_SECTION,
             },
         ],
         [
             {
                 icon: 'short_text',
-                name: 'Short Text',
+                name: QuestionType.SHORT_TEXT,
             },
             {
                 icon: 'subject',
-                name: 'Long Text',
+                name: QuestionType.LONG_TEXT,
             },
         ],
         [
             {
                 icon: 'radio_button_checked',
-                name: 'Multiple Choice',
+                name: QuestionType.MULTIPLE_CHOICE,
             },
             {
                 icon: 'check_box',
-                name: 'Check-boxes',
+                name: QuestionType.CHECK_BOX,
             },
             {
                 icon: 'expand_circle_down',
-                name: 'Drop-down',
+                name: QuestionType.DROP_DOWN,
             },
         ],
         [
             {
                 icon: 'event',
-                name: 'Date',
+                name: QuestionType.DATE,
             },
         ],
         [
             {
                 icon: 'description',
-                name: 'Document',
+                name: QuestionType.DOCUMENT,
             },
         ],
     ]
