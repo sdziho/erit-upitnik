@@ -19,6 +19,13 @@ export const APP_ROUTES: Routes = [
             ),
     },
     {
+        path: 'fill-form',
+        loadChildren: () =>
+            import('./fill-form/fill-form.routes').then(
+                (r) => r.FILL_FORM_ROUTES
+            ),
+    },
+    {
         path: 'projects',
         loadChildren: () =>
             import('./projects/projects.routes').then((r) => r.PROJECTS_ROUTES),

@@ -1,41 +1,51 @@
-@for (section of sections.controls; track section; let i = $index) {
-    @if (getSectionName(section)) {
-        <app-section [id]="section.value.id" [title]="section.value.name">
-            @for (
-                question of getQuestions(section).controls;
-                track question;
-                let j = $index
-            ) {
-                <app-question [questionForm]="question"></app-question>
+<div class="container">
+    <div class="play" (click)="handleNavigation()">
+        <mat-icon>play_arrow</mat-icon>
+    </div>
+    <div class="sections-container">
+        @for (section of sections.controls; track section; let i = $index) {
+            @if (getSectionName(section)) {
+                <app-section
+                    [id]="section.value.id"
+                    [title]="section.value.name"
+                >
+                    @for (
+                        question of getQuestions(section).controls;
+                        track question;
+                        let j = $index
+                    ) {
+                        <app-question [questionForm]="question"></app-question>
+                    }
+                    @if (getQuestions(section).controls.length === 0) {
+                        <app-no-data-page
+                            text="No Question Available"
+                            buttonText="Add Question"
+                            (onButtonAction)="addField($event, section)"
+                        ></app-no-data-page>
+                    } @else {
+                        <app-flex-row class="gap-10 add-field">
+                            <app-add-question
+                                [section]="section"
+                                (onAddOption)="addAnswer($event)"
+                            ></app-add-question>
+                            <app-add-toolbar
+                                (onAddButton)="addField($event, section)"
+                            ></app-add-toolbar>
+                        </app-flex-row>
+                    }
+                </app-section>
             }
-            @if (getQuestions(section).controls.length === 0) {
-                <app-no-data-page
-                    text="No Question Available"
-                    buttonText="Add Question"
-                    (onButtonAction)="addField($event, section)"
-                ></app-no-data-page>
-            } @else {
-                <app-flex-row class="gap-10 add-field">
-                    <app-add-question
-                        [section]="section"
-                        (onAddOption)="addAnswer($event)"
-                    ></app-add-question>
-                    <app-add-toolbar
-                        (onAddButton)="addField($event, section)"
-                    ></app-add-toolbar>
-                </app-flex-row>
-            }
-        </app-section>
-    }
-}
-@if (sections.controls.length === 0) {
-    <app-no-data-page
-        text="No Section Available"
-        buttonText="Add Section"
-        (onButtonAction)="addField($event)"
-    ></app-no-data-page>
-} @else {
-    <app-flex-row class="add-field">
-        <app-add-field [form]="questionnaireForm$()"></app-add-field>
-    </app-flex-row>
-}
+        }
+        @if (sections.controls.length === 0) {
+            <app-no-data-page
+                text="No Section Available"
+                buttonText="Add Section"
+                (onButtonAction)="addField($event)"
+            ></app-no-data-page>
+        } @else {
+            <app-flex-row class="add-field">
+                <app-add-field [form]="questionnaireForm$()"></app-add-field>
+            </app-flex-row>
+        }
+    </div>
+</div>

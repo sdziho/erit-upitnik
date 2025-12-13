@@ -1,4 +1,23 @@
-.add-field {
-    padding-top: 10px;
-    display: flex;
+.container {
+    position: relative;
+    .play {
+        position: absolute;
+        top: 0;
+        right: 0;
+        display: inline-flex;
+        background-color: var(--accent);
+        border-radius: 50%;
+        mat-icon {
+            padding: 8px;
+            color: var(--white);
+            cursor: pointer;
+        }
+    }
+    .sections-container {
+        padding-top: 50px;
+    }
+    .add-field {
+        padding-top: 10px;
+        display: flex;
+    }
 }

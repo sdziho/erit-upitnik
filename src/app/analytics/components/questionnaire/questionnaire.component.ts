@@ -11,6 +11,9 @@ import { AddToolbarComponent } from '../../../ui/add-toolbar/add-toolbar.compone
 import { AddQuestionComponent } from '../../../ui/add-question/add-question.component'
 import { NoDataPageComponent } from '../../../ui/no-data-page/no-data-page.component'
 import { QuestionType } from '../../../core/models/questionnaire.model'
+import { MatIcon } from '@angular/material/icon'
+import { MatButtonModule } from '@angular/material/button'
+import { Router } from '@angular/router'
 
 @Component({
     selector: 'app-questionnaire',
@@ -27,10 +30,14 @@ import { QuestionType } from '../../../core/models/questionnaire.model'
         AddToolbarComponent,
         AddQuestionComponent,
         NoDataPageComponent,
+        MatIcon,
+        MatButtonModule,
     ],
 })
 export class QuestionnaireComponent implements OnInit {
     readonly #store = inject(QuestionnaireStore)
+    readonly #router = inject(Router)
+
     questionnaireForm$: Signal<FormGroup> = this.#store.form$
     badgeType = BadgeTypes.SQUARE
 
@@ -40,13 +47,10 @@ export class QuestionnaireComponent implements OnInit {
         >
     }
 
-    constructor() {
-        effect(() => console.log(this.questionnaireForm$()))
-    }
-
     getSectionName(section: FormGroup) {
         return section.get('name')?.value
     }
+
     ngOnInit(): void {
         this.#store.initForm()
     }
@@ -106,5 +110,9 @@ export class QuestionnaireComponent implements OnInit {
         } else if (fieldName === QuestionType.NEW_SECTION) {
             this.addSection()
         }
+    }
+
+    handleNavigation() {
+        this.#router.navigate(['/fill-form'])
     }
 }

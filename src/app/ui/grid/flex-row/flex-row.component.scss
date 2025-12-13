@@ -13,4 +13,8 @@
         flex-direction: row;
         flex-wrap: wrap;
     }
+
+    :host(.no-gap) {
+        gap: 0px !important;
+    }
 }

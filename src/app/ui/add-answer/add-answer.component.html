@@ -1,13 +1,13 @@
 @if (question) {
     <div class="form-wrapper">
         <form [formGroup]="question">
-            <div formArrayName="answers">
+            <div formArrayName="answers" class="gap-4">
                 @for (
                     question of answers.controls;
                     track question;
                     let i = $index
                 ) {
-                    <app-flex-row [formGroupName]="i" class="answer">
+                    <app-flex-row [formGroupName]="i" class="no-gap answer">
                         <div class="f--row-c gap-8 option">
                             @if (type === 'Multiple Choice') {
                                 <mat-radio-button></mat-radio-button>
@@ -17,12 +17,15 @@
                             }
 
                             <mat-form-field appearance="fill">
-                                <mat-label>{{ 'Option ' + (i + 1) }}</mat-label>
-                                <input matInput formControlName="text" />
+                                <input
+                                    matInput
+                                    formControlName="text"
+                                    placeholder="Option"
+                                />
                             </mat-form-field>
                         </div>
 
-                        <div class="gap-8 comment">
+                        <app-flex-row class="no-collapse gap-8 comment">
                             <div class="f--row-c gap-8 option">
                                 <mat-checkbox
                                     formControlName="flagged"
@@ -32,24 +35,25 @@
                                 </mat-checkbox>
 
                                 <mat-form-field appearance="fill">
-                                    <mat-label>Comment</mat-label>
                                     <input
                                         matInput
                                         type="text"
                                         formControlName="comment"
+                                        placeholder="Comment"
                                     />
                                 </mat-form-field>
                             </div>
-
-                            <mat-form-field appearance="fill">
-                                <mat-label>Points</mat-label>
-                                <input
-                                    matInput
-                                    type="number"
-                                    formControlName="points"
-                                />
-                            </mat-form-field>
-                        </div>
+                            <div class="f--row-c gap-8 option side">
+                                <mat-form-field appearance="fill">
+                                    <input
+                                        matInput
+                                        type="number"
+                                        formControlName="points"
+                                        placeholder="Points"
+                                    />
+                                </mat-form-field>
+                            </div>
+                        </app-flex-row>
                     </app-flex-row>
                 }
             </div>
