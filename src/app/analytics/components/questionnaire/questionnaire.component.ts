@@ -41,8 +41,12 @@ export class QuestionnaireComponent implements OnInit {
         effect(() => console.log(this.questionnaireForm$()))
     }
 
+    getSectionName(section: FormGroup) {
+        return section.get('name')?.value
+    }
     ngOnInit(): void {
         this.#store.initForm()
+        this.addSection()
     }
 
     getQuestions(section: FormGroup) {

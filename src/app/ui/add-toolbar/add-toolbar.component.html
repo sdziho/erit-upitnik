@@ -1,5 +1,5 @@
 <app-flex-col class="gap-10 icon-wrapper">
-    <button mat-icon-button (click)="handleAddButton()">
+    <button mat-icon-button [matMenuTriggerFor]="menu">
         <mat-icon>add_circle</mat-icon>
     </button>
     <div class="divider-line"></div>
@@ -10,3 +10,21 @@
         <mat-icon>device_hub</mat-icon>
     </button>
 </app-flex-col>
+
+<mat-menu #menu="matMenu" panelClass="items-menu">
+    @for (menuSection of matMenuSections; track menuSection; let i = $index) {
+        @for (menuButton of menuSection; track menuButton) {
+            <button mat-menu-item (click)="handleAddButton(menuButton)">
+                <div class="f--row-c">
+                    <mat-icon class="icon-menu">{{
+                        menuButton?.icon
+                    }}</mat-icon>
+                    <span>{{ menuButton?.name }}</span>
+                </div>
+            </button>
+        }
+        @if (i !== matMenuSections.length - 1) {
+            <div class="divider-line"></div>
+        }
+    }
+</mat-menu>

@@ -15,3 +15,13 @@
 .mat-expansion-panel:not(.mat-mdc-accordion) {
     box-shadow: none !important;
 }
+
+.mat-expansion-panel,
+.mat-expansion-panel-content,
+.mat-expansion-panel-body {
+    overflow: visible !important;
+}
+
+.mat-expansion-panel-body {
+    padding: 10px 0px 15px 0px !important;
+}

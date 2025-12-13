@@ -1,0 +1,22 @@
+.mat-mdc-menu-content {
+    padding: 12px 8px !important;
+}
+
+.mat-mdc-menu-content {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 10px !important;
+    background: var(--white) !important;
+    min-width: 186px !important;
+}
+
+.mat-mdc-menu-item .mat-icon {
+    margin-right: 6px !important;
+}
+.mat-mdc-menu-item:has(.material-icons, mat-icon, [matButtonIcon]) {
+    padding: 6px 7px !important;
+}
+
+.mat-mdc-menu-item {
+    min-height: 30px !important;
+}

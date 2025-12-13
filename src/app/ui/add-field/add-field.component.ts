@@ -21,6 +21,10 @@ export class AddFieldComponent {
     @Input() type!: string
     @Input() form!: FormGroup
 
+    get isSectionVisible() {
+        return this.form && this.lastIndex >= 0
+    }
+
     get sections() {
         return this.form?.get('sections') as FormArray
     }

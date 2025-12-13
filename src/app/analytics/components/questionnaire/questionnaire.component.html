@@ -1,23 +1,25 @@
 @for (section of sections.controls; track section; let i = $index) {
-    <app-section [id]="section.value.id" [title]="section.value.name">
-        @for (
-            question of getQuestions(section).controls;
-            track question;
-            let j = $index
-        ) {
-            <app-question [questionForm]="question"></app-question>
-        }
-        <app-flex-row class="gap-10 add-field">
-            <app-add-question
-                [section]="section"
-                [form]="questionnaireForm$()"
-                (onAddOption)="addAnswer($event)"
-            ></app-add-question>
-            <app-add-toolbar
-                (onAddButton)="addQuestion(section)"
-            ></app-add-toolbar>
-        </app-flex-row>
-    </app-section>
+    @if (getSectionName(section)) {
+        <app-section [id]="section.value.id" [title]="section.value.name">
+            @for (
+                question of getQuestions(section).controls;
+                track question;
+                let j = $index
+            ) {
+                <app-question [questionForm]="question"></app-question>
+            }
+            <app-flex-row class="gap-10 add-field">
+                <app-add-question
+                    [section]="section"
+                    [form]="questionnaireForm$()"
+                    (onAddOption)="addAnswer($event)"
+                ></app-add-question>
+                <app-add-toolbar
+                    (onAddButton)="addQuestion(section)"
+                ></app-add-toolbar>
+            </app-flex-row>
+        </app-section>
+    }
 }
 <app-flex-row class="gap-10 add-field">
     <app-add-field [form]="questionnaireForm$()"></app-add-field>
