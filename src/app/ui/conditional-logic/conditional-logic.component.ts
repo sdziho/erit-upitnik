@@ -33,6 +33,8 @@ export class ConditionalLogicComponent {
     @Input() question!: FormGroup
 
     form$ = this.#questionnaireStore.form$
+    listOfSectionIds$ = this.#questionnaireStore.listOfSectionIds$
+    listOfQuestionIds$ = this.#questionnaireStore.listOfQuestionIds$
     openType = [QuestionnaireFormTypes.QUESTION, QuestionnaireFormTypes.SECTION]
 
     get conditionalLogic(): FormArray {
@@ -41,16 +43,6 @@ export class ConditionalLogicComponent {
 
     get answers(): FormArray {
         return this.question.get('answers') as FormArray
-    }
-
-    get sectionIds(): string[] {
-        return this.form$().value.sections.map((section: any) => section.id)
-    }
-
-    get questionIds(): string[] {
-        return this.form$().value.sections.flatMap((section: any) =>
-            section.questions.map((question: any) => question.id)
-        )
     }
 
     getAnswerId(answer: AbstractControl<any>) {

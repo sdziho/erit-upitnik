@@ -20,6 +20,10 @@ export class QuestionnaireFormUtils {
     public static question(formBuilder: FormBuilder) {
         return {
             id: new FormControl('', Validators.required),
+            uniqueId: new FormControl(
+                Math.random().toString(36),
+                Validators.required
+            ), //this is important for navigating to question in stepper
             text: new FormControl('', Validators.required),
             type: new FormControl('Check-Box'),
             answers: formBuilder.array([]),

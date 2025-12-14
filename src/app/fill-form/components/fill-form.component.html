@@ -1,6 +1,6 @@
 <div class="page-wrapper">
     @if (sections?.controls) {
-        <mat-stepper>
+        <mat-stepper #stepper>
             @for (section of sections.controls; track section) {
                 @for (
                     question of getQuestions(section).controls;
@@ -26,7 +26,7 @@
                                 mat-button
                                 matStepperNext
                                 class="button btn-primary"
-                                (click)="next()"
+                                (click)="next(stepper, question)"
                                 >Next</button
                             >
                         </div>

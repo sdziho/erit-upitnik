@@ -3,13 +3,23 @@ import { FormArray, FormGroup } from '@angular/forms'
 import { signalState, patchState } from '@ngrx/signals'
 import { FormProviderService } from '../services/form-provider.service'
 import { QuestionnaireFormTypes } from '../models/questionnaire.model'
+import { tap } from 'rxjs'
 
+interface QuestionList {
+    id: string
+    uniqueId: string
+    sectionId: string
+}
 interface LayoutState {
     form: FormGroup | null
+    listOfSectionIds: string[]
+    listOfQuestionIds: QuestionList[]
 }
 
 const initialState: LayoutState = {
     form: null,
+    listOfSectionIds: [],
+    listOfQuestionIds: [],
 }
 
 @Injectable({ providedIn: 'root' })
@@ -17,13 +27,36 @@ export class QuestionnaireStore {
     readonly #state = signalState(initialState)
     readonly #formProvicerService = inject(FormProviderService)
     form$: Signal<FormGroup> = computed(() => this.#state.form() as FormGroup)
+    listOfSectionIds$: Signal<string[]> = computed(() =>
+        this.#state.listOfSectionIds()
+    )
+    listOfQuestionIds$: Signal<QuestionList[]> = computed(() =>
+        this.#state.listOfQuestionIds()
+    )
 
-    initForm() {
+    initForm$() {
         patchState(this.#state, {
             form: this.#formProvicerService.generateForm(
                 QuestionnaireFormTypes.QUESTIONNAIRE
             ),
         })
+
+        return this.form$().valueChanges.pipe(
+            tap((value) => {
+                patchState(this.#state, {
+                    listOfSectionIds: value.sections?.map(
+                        (section: any) => section.id
+                    ),
+                    listOfQuestionIds: value.sections.flatMap((section: any) =>
+                        section.questions.map((question: any) => ({
+                            id: question.id,
+                            uniqueId: question.uniqueId,
+                            sectionId: section.id,
+                        }))
+                    ),
+                })
+            })
+        )
     }
 
     addSection() {

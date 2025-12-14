@@ -15,6 +15,9 @@ import { MatIcon } from '@angular/material/icon'
 import { MatButtonModule } from '@angular/material/button'
 import { Router } from '@angular/router'
 import { ChangeDetectorRef } from '@angular/core'
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy'
+
+@UntilDestroy()
 @Component({
     selector: 'app-questionnaire',
     templateUrl: './questionnaire.component.html',
@@ -53,7 +56,7 @@ export class QuestionnaireComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.#store.initForm()
+        this.#store.initForm$().pipe(untilDestroyed(this)).subscribe()
     }
 
     getQuestions(section: FormGroup) {

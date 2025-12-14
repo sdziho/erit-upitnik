@@ -57,16 +57,16 @@
                                     formControlName="navigateToId"
                                     placeholder="Select"
                                 >
-                                    @for (q of questionIds; track q) {
-                                        <mat-option [value]="q">
-                                            {{ q }}
+                                    @for (q of listOfQuestionIds$(); track q) {
+                                        <mat-option [value]="q.uniqueId">
+                                            {{ q.sectionId + ' ' + q.id }}
                                         </mat-option>
                                     }
                                 </mat-select>
                             </mat-form-field>
                         }
 
-                        @if (cl.get('type')?.value === 'selection') {
+                        @if (cl.get('type')?.value === 'section') {
                             <mat-form-field
                                 appearance="outline"
                                 class="mat-select-wrapper"
@@ -75,7 +75,7 @@
                                     formControlName="navigateToId"
                                     placeholder="Select"
                                 >
-                                    @for (s of sectionIds; track s) {
+                                    @for (s of listOfSectionIds$(); track s) {
                                         <mat-option [value]="s">
                                             {{ s }}
                                         </mat-option>
