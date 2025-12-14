@@ -20,3 +20,49 @@
 .mat-mdc-form-field-bottom-align::before {
     display: none;
 }
+
+.mat-mdc-form-field {
+    .mdc-text-field {
+        background: transparent !important;
+        border-radius: 0 !important;
+    }
+
+    .mdc-notched-outline {
+        display: none !important;
+    }
+}
+
+.mat-mdc-select {
+    max-width: 200px;
+}
+
+.mat-mdc-select-trigger {
+    margin-right: 20px;
+    margin-left: 4px;
+}
+.mat-select-wrapper {
+    .mdc-text-field {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.38);
+    }
+    &.mat-focused .mdc-text-field {
+        border-bottom-width: 2px;
+    }
+}
+
+.mat-mdc-select-panel {
+    background-color: var(--white) !important;
+    min-width: 100px !important;
+}
+
+.mat-mdc-option {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-width: 100px;
+    max-width: 200px;
+    box-sizing: border-box;
+}
+
+.mat-mdc-option .mat-pseudo-checkbox-minimal {
+    margin-left: 0px !important;
+}

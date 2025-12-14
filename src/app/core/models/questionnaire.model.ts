@@ -14,6 +14,7 @@ export enum QuestionnaireFormTypes {
     QUESTION = 'question',
     QUESTIONNAIRE = 'questionnaire',
     ANSWERS = 'answers',
+    CONDITIONAL_LOGIC = 'conditional logic',
 }
 
 export interface Answers {

@@ -3,6 +3,7 @@
 }
 .question-wrapper {
     .question-name {
+        overflow: hidden;
         display: flex;
         padding: 10px 20px;
         .question-id {

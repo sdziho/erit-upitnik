@@ -11,6 +11,7 @@ import { MatInput } from '@angular/material/input'
 import { AddAnswerComponent } from '../add-answer/add-answer.component'
 import { MatIcon } from '@angular/material/icon'
 import { MatIconButton } from '@angular/material/button'
+import { ConditionalLogicComponent } from '../conditional-logic/conditional-logic.component'
 
 @Component({
     selector: 'app-add-question',
@@ -26,6 +27,7 @@ import { MatIconButton } from '@angular/material/button'
         AddAnswerComponent,
         MatIcon,
         MatIconButton,
+        ConditionalLogicComponent,
     ],
 })
 export class AddQuestionComponent {

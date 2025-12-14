@@ -66,7 +66,7 @@ export class QuestionnaireComponent implements OnInit {
 
     addSection(): void {
         this.#store.addSection()
-        this.addUniqueSectionIdentifier()
+        this.#addUniqueSectionIdentifier()
     }
 
     addQuestion(section: FormGroup, type: QuestionType): void {
@@ -74,7 +74,7 @@ export class QuestionnaireComponent implements OnInit {
         //add one blank answer to latest question
         const questionsNumber = this.getQuestions(section).controls.length
         const lastQuestion = this.getQuestions(section).at(questionsNumber - 1)
-        this.addUniqueQuestionIdentifier(questionsNumber, lastQuestion)
+        this.#addUniqueQuestionIdentifier(questionsNumber, lastQuestion)
         lastQuestion.get('type')?.setValue(type)
         this.#store.addAnswer(lastQuestion)
     }
@@ -84,7 +84,7 @@ export class QuestionnaireComponent implements OnInit {
         this.#cd.detectChanges()
     }
 
-    addUniqueSectionIdentifier() {
+    #addUniqueSectionIdentifier() {
         const sectionLength = this.sections.value.length
         this.sections.at(sectionLength - 1).setValue({
             id: `S-${sectionLength.toString().padStart(3, '0')}`,
@@ -92,7 +92,7 @@ export class QuestionnaireComponent implements OnInit {
             questions: [],
         })
     }
-    addUniqueQuestionIdentifier(
+    #addUniqueQuestionIdentifier(
         questionsNumber: number,
         lastQuestion: FormGroup
     ) {

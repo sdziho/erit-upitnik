@@ -23,16 +23,30 @@ export class QuestionnaireFormUtils {
             text: new FormControl('', Validators.required),
             type: new FormControl('Check-Box'),
             answers: formBuilder.array([]),
+            conditionalLogic: formBuilder.array([]),
         }
     }
+
     public static answer() {
         return {
+            id: new FormControl(
+                Math.random().toString(36),
+                Validators.required
+            ), //random id
             text: new FormControl('', Validators.required),
             correct: new FormControl(false, Validators.required),
             flagged: new FormControl(false),
             comment: new FormControl(''),
             points: new FormControl(NaN),
             selected: new FormControl(false),
+        }
+    }
+
+    public static conditionalLogic() {
+        return {
+            answerId: new FormControl(null, Validators.required),
+            type: new FormControl(null, Validators.required),
+            navigateToId: new FormControl(null, Validators.required),
         }
     }
 }

@@ -27,6 +27,10 @@ export class FormProviderService {
                 return this.#formBuilder.group(
                     QuestionnaireFormUtils.answer()
                 ) as FormGroup
+            case 'conditional logic':
+                return this.#formBuilder.group(
+                    QuestionnaireFormUtils.conditionalLogic()
+                ) as FormGroup
             default:
                 return this.#formBuilder.group(
                     QuestionnaireFormUtils.questionnaire(this.#formBuilder)

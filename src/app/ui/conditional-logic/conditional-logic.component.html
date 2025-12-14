@@ -1,0 +1,112 @@
+<app-flex-row class="no-collapse gap-15 condition-row-wrapper">
+    @if (conditionalLogic?.controls) {
+        <form [formGroup]="question">
+            <div formArrayName="conditionalLogic" class="gap-4">
+                @for (
+                    cl of conditionalLogic.controls;
+                    track cl;
+                    let i = $index
+                ) {
+                    <app-flex-row
+                        [formGroupName]="i"
+                        class="no-collapse logic-wrapper gap-15"
+                    >
+                        <span>If</span>
+                        <mat-form-field
+                            appearance="outline"
+                            class="mat-select-wrapper"
+                        >
+                            <mat-select
+                                formControlName="answerId"
+                                placeholder="Select option"
+                            >
+                                @for (
+                                    answer of answers.controls;
+                                    track answer
+                                ) {
+                                    <mat-option
+                                        [value]="getAnswerId(answer)?.value"
+                                    >
+                                        {{ getAnswerText(answer)?.value }}
+                                    </mat-option>
+                                }
+                            </mat-select>
+                        </mat-form-field>
+                        <span>than open</span>
+                        <mat-form-field
+                            appearance="outline"
+                            class="mat-select-wrapper"
+                        >
+                            <mat-select
+                                formControlName="type"
+                                placeholder="Select"
+                            >
+                                @for (type of openType; track type) {
+                                    <mat-option [value]="type">
+                                        {{ type }}
+                                    </mat-option>
+                                }
+                            </mat-select>
+                        </mat-form-field>
+                        @if (cl.get('type')?.value === 'question') {
+                            <mat-form-field
+                                appearance="outline"
+                                class="mat-select-wrapper"
+                            >
+                                <mat-select
+                                    formControlName="navigateToId"
+                                    placeholder="Select"
+                                >
+                                    @for (q of questionIds; track q) {
+                                        <mat-option [value]="q">
+                                            {{ q }}
+                                        </mat-option>
+                                    }
+                                </mat-select>
+                            </mat-form-field>
+                        }
+
+                        @if (cl.get('type')?.value === 'selection') {
+                            <mat-form-field
+                                appearance="outline"
+                                class="mat-select-wrapper"
+                            >
+                                <mat-select
+                                    formControlName="navigateToId"
+                                    placeholder="Select"
+                                >
+                                    @for (s of sectionIds; track s) {
+                                        <mat-option [value]="s">
+                                            {{ s }}
+                                        </mat-option>
+                                    }
+                                </mat-select>
+                            </mat-form-field>
+                        }
+                        @if (deleteIconVisible(cl)) {
+                            <button
+                                mat-icon-button
+                                (click)="handleDeleteClick(i)"
+                            >
+                                <mat-icon>delete</mat-icon>
+                            </button>
+                        }
+                        @if (i === conditionalLogic.controls.length - 1) {
+                            <button
+                                mat-icon-button
+                                (click)="handleAddOptionClick()"
+                            >
+                                <mat-icon>add_circle</mat-icon>
+                            </button>
+                        }
+                    </app-flex-row>
+                }
+            </div>
+        </form>
+    }
+    @if (conditionalLogic?.controls?.length === 0) {
+        <button mat-icon-button (click)="handleAddOptionClick()">
+            <mat-icon>add_circle</mat-icon>
+        </button>
+    }
+</app-flex-row>

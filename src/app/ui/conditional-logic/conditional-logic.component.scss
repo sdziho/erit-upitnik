@@ -1,0 +1,9 @@
+.condition-row-wrapper {
+    align-items: end;
+    .logic-wrapper {
+        align-items: center;
+    }
+    button mat-icon {
+        color: var(--primary);
+    }
+}

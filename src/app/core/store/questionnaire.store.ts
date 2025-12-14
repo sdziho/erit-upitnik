@@ -52,4 +52,15 @@ export class QuestionnaireStore {
             )
         )
     }
+
+    addConditionalLogic(question: FormGroup) {
+        const conditionalLogicArray = question?.get(
+            'conditionalLogic'
+        ) as FormArray
+        conditionalLogicArray.push(
+            this.#formProvicerService.generateForm(
+                QuestionnaireFormTypes.CONDITIONAL_LOGIC
+            )
+        )
+    }
 }
