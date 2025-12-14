@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core'
 import { BadgeTypes } from '../badges/badge.component'
 import { FormArray, FormGroup, ReactiveFormsModule } from '@angular/forms'
-import { MatFormField, MatLabel } from '@angular/material/form-field'
+import { MatFormField } from '@angular/material/form-field'
 import { MatInput } from '@angular/material/input'
 import { MatCheckbox } from '@angular/material/checkbox'
 import { FlexRowComponent } from '../grid/flex-row/flex-row.component'
@@ -16,7 +16,6 @@ import { MatRadioButton } from '@angular/material/radio'
         ReactiveFormsModule,
         MatFormField,
         MatInput,
-        MatLabel,
         MatCheckbox,
         FlexRowComponent,
         MatRadioButton,

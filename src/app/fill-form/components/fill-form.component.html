@@ -1,1 +1,38 @@
-<p>APPLICATIONS PAGE</p>
+<div class="page-wrapper">
+    @if (sections?.controls) {
+        <mat-stepper>
+            @for (section of sections.controls; track section) {
+                @for (
+                    question of getQuestions(section).controls;
+                    track question
+                ) {
+                    <mat-step>
+                        <app-section
+                            [section]="section.value"
+                            [expansionDisabled]="true"
+                        ></app-section>
+                        <app-question
+                            [questionForm]="question"
+                            [addMode]="true"
+                        ></app-question>
+                        <div class="navigation-buttons gap-15">
+                            <button
+                                mat-button
+                                matStepperPrevious
+                                class="button btn-secondary"
+                                >Back</button
+                            >
+                            <button
+                                mat-button
+                                matStepperNext
+                                class="button btn-primary"
+                                (click)="next()"
+                                >Next</button
+                            >
+                        </div>
+                    </mat-step>
+                }
+            }
+        </mat-stepper>
+    }
+</div>

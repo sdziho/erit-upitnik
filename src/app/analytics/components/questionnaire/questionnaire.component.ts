@@ -1,4 +1,4 @@
-import { Component, effect, inject, OnInit, Signal } from '@angular/core'
+import { Component, inject, OnInit, Signal } from '@angular/core'
 import { FormGroup, FormArray, ReactiveFormsModule } from '@angular/forms'
 import { CommonModule } from '@angular/common'
 import { SectionComponent } from '../../../ui/section/section.component'
@@ -14,7 +14,7 @@ import { QuestionType } from '../../../core/models/questionnaire.model'
 import { MatIcon } from '@angular/material/icon'
 import { MatButtonModule } from '@angular/material/button'
 import { Router } from '@angular/router'
-
+import { ChangeDetectorRef } from '@angular/core'
 @Component({
     selector: 'app-questionnaire',
     templateUrl: './questionnaire.component.html',
@@ -37,6 +37,7 @@ import { Router } from '@angular/router'
 export class QuestionnaireComponent implements OnInit {
     readonly #store = inject(QuestionnaireStore)
     readonly #router = inject(Router)
+    readonly #cd = inject(ChangeDetectorRef)
 
     questionnaireForm$: Signal<FormGroup> = this.#store.form$
     badgeType = BadgeTypes.SQUARE
@@ -80,6 +81,7 @@ export class QuestionnaireComponent implements OnInit {
 
     addAnswer(question: FormGroup) {
         this.#store.addAnswer(question)
+        this.#cd.detectChanges()
     }
 
     addUniqueSectionIdentifier() {

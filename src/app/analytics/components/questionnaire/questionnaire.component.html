@@ -5,10 +5,7 @@
     <div class="sections-container">
         @for (section of sections.controls; track section; let i = $index) {
             @if (getSectionName(section)) {
-                <app-section
-                    [id]="section.value.id"
-                    [title]="section.value.name"
-                >
+                <app-section [section]="section.value">
                     @for (
                         question of getQuestions(section).controls;
                         track question;

@@ -10,7 +10,7 @@
     align-items: center;
 }
 
-$gaps: 2, 4, 6, 8, 10, 12;
+$gaps: 2, 4, 6, 8, 10, 12, 15;
 
 @each $gap in $gaps {
     .gap-#{$gap} {

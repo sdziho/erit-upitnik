@@ -32,6 +32,7 @@ export class QuestionnaireFormUtils {
             flagged: new FormControl(false),
             comment: new FormControl(''),
             points: new FormControl(NaN),
+            selected: new FormControl(false),
         }
     }
 }

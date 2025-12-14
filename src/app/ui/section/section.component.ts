@@ -11,6 +11,6 @@ import { BadgeComponent, BadgeTypes } from '../badges/badge.component'
 })
 export class SectionComponent {
     type: BadgeTypes = BadgeTypes.SQUARE
-    @Input() title: string = 'Enter title here'
-    @Input() id: string = 'S-001'
+    @Input() section!: { name: string; id: string }
+    @Input() expansionDisabled = false
 }

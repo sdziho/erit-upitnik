@@ -5,6 +5,12 @@ body {
     margin: 0;
 }
 
+.page-wrapper {
+    background-color: var(--white);
+    padding: 30px;
+    border-radius: 10px;
+}
+
 .title {
     font-weight: var(--font-weight-semi-bold);
     font-size: 18px;

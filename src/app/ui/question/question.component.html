@@ -1,25 +1,33 @@
 <app-flex-col class="question-wrapper">
-    @if (text) {
+    @if (text?.value) {
         <div class="gap-10 question-name">
-            <div class="question-id">{{ id }}</div>
-            <div class="question-text">{{ text }}</div>
+            <div class="question-id">{{ id?.value }}</div>
+            <div class="question-text">{{ text?.value }}</div>
         </div>
         <app-flex-col class="answers-wrapper">
-            @for (answer of answers; track answer) {
+            @for (answer of answers?.value; track answer) {
                 <!-- For basic purposes, we will check if text is present to show options,
                     otherwise we should create required field checker 
                  -->
-                @if (type === 'Check-Box' && answer.text) {
+                @if (type?.value === 'Check-Box' && answer.text) {
                     <mat-checkbox
-                        [ngClass]="{ 'flagged-checkbox': answer.flagged }"
+                        [checked]="answer.selected"
+                        [ngClass]="{
+                            'flagged-checkbox': answer.flagged && !addMode,
+                        }"
+                        (change)="onCheckboxChange(answer, $event.checked)"
                     >
                         <ng-container
                             *ngTemplateOutlet="answerContent"
                         ></ng-container>
                     </mat-checkbox>
-                } @else if (type === 'Multiple Choice' && answer.text) {
+                } @else if (type?.value === 'Multiple Choice' && answer.text) {
                     <mat-radio-button
-                        [ngClass]="{ 'flagged-checkbox': answer.flagged }"
+                        [checked]="answer.selected"
+                        (change)="onRadioChange(answer)"
+                        [ngClass]="{
+                            'flagged-checkbox': answer.flagged && !addMode,
+                        }"
                     >
                         <ng-container
                             *ngTemplateOutlet="answerContent"
@@ -29,7 +37,7 @@
                 <ng-template #answerContent>
                     <div class="f--row-c gap-10">
                         <span>{{ answer.text }}</span>
-                        @if (answer?.points) {
+                        @if (answer?.points && !addMode) {
                             <app-badge
                                 [style]="{
                                     background: '#EBEBEB',

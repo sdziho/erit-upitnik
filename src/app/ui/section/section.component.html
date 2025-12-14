@@ -1,11 +1,11 @@
 <mat-accordion>
-    <mat-expansion-panel>
+    <mat-expansion-panel [disabled]="expansionDisabled">
         <mat-expansion-panel-header>
             <mat-panel-title>
-                <app-badge [type]="type" [text]="id"></app-badge>
+                <app-badge [type]="type" [text]="section.id"></app-badge>
             </mat-panel-title>
 
-            <mat-panel-description> {{ title }} </mat-panel-description>
+            <mat-panel-description> {{ section.name }} </mat-panel-description>
         </mat-expansion-panel-header>
 
         <ng-content></ng-content>
