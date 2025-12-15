@@ -20,13 +20,13 @@
                                 <input
                                     matInput
                                     formControlName="text"
-                                    placeholder="Option"
+                                    [placeholder]="`Option ${i + 1}`"
                                 />
                             </mat-form-field>
                         </div>
 
                         <app-flex-row class="no-collapse gap-8 comment">
-                            <div class="f--row-c gap-8 option">
+                            <div class="f--row-c gap-10 option">
                                 <mat-checkbox
                                     formControlName="flagged"
                                     class="flagged-checkbox"

@@ -30,10 +30,13 @@ import { AuthService } from '../../services/auth.service'
 export class SideNavComponent {
     readonly #layoutStore = inject(LayoutStore)
     readonly #authService = inject(AuthService)
-
     badgeType = BadgeTypes.PROFILE
     isNavbarOpen$: Signal<boolean> = this.#layoutStore.isNavbarOpen$
     routesList: Routes[] = NavigationList
     user$: Signal<string | null> = this.#authService.user$
     role$: Signal<string | null> = this.#authService.role$
+
+    toggleNavbar() {
+        this.#layoutStore.toggleNavbar()
+    }
 }

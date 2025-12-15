@@ -4,34 +4,43 @@ export interface Routes {
     route: string[]
 }
 
+export enum RouteNames {
+    PRIJAVE = 'Prijave',
+    PROJEKTI = 'Projekti',
+    ANALITIKA = 'Analitika i detekcija',
+    IZVJESTAVANJE = 'Izvještavanje',
+    ADMIN = 'Administracija korisnika',
+    POSTAVKE = 'Postavke',
+}
+
 export const NavigationList: Routes[] = [
     {
-        name: 'Prijave',
+        name: RouteNames.PRIJAVE,
         icon: 'feedback',
         route: ['/applications'],
     },
     {
-        name: 'Projekti',
+        name: RouteNames.PROJEKTI,
         icon: 'holiday_village',
         route: ['/projects'],
     },
     {
-        name: 'Analitika i detekcija',
+        name: RouteNames.ANALITIKA,
         icon: 'equalizer',
         route: ['/analytics'],
     },
     {
-        name: 'Izvještavanje',
+        name: RouteNames.IZVJESTAVANJE,
         icon: 'assignment',
         route: ['/reports'],
     },
     {
-        name: 'Administracija korisnika',
+        name: RouteNames.ADMIN,
         icon: 'people_alt',
         route: ['/admin'],
     },
     {
-        name: 'Postavke',
+        name: RouteNames.POSTAVKE,
         icon: 'settings',
         route: ['/settings'],
     },

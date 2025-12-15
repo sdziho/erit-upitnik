@@ -5,5 +5,6 @@ export const ANALYTICS_ROUTES: Routes = [
     {
         path: '',
         component: AnalyticsComponent,
+        data: { name: 'Upitnik' },
     },
 ]

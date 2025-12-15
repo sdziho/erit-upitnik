@@ -8,6 +8,11 @@
     background-color: var(--primary);
     padding: 4px 16px;
 
+    .navigation-name {
+        color: var(--white);
+        font-size: var(--font-l);
+    }
+
     .header-icons {
         width: 48px;
         height: 48px;

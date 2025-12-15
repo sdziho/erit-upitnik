@@ -10,6 +10,10 @@
     align-items: center;
 }
 
+.align--e {
+    align-self: end;
+}
+
 $gaps: 2, 4, 6, 8, 10, 12, 15;
 
 @each $gap in $gaps {

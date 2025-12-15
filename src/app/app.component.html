@@ -1,5 +1,15 @@
 <app-header></app-header>
 <app-side-nav></app-side-nav>
-<div class="router-wrapper">
+<div class="router-wrapper gap-8">
+    <div class="f--row-c gap-10 align--e">
+        <span>Naslovna</span>
+        <span>></span>
+        @for (route of routerNames$(); track route; let i = $index) {
+            <span>{{ route }}</span>
+            @if (i !== routerNames$().length - 1) {
+                <span>></span>
+            }
+        }
+    </div>
     <router-outlet></router-outlet>
 </div>

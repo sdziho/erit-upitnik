@@ -1,4 +1,4 @@
-<app-flex-row class="no-collapse gap-15 condition-row-wrapper">
+<app-flex-row class="no-collapse condition-row-wrapper">
     @if (conditionalLogic?.controls) {
         <form [formGroup]="question">
             <div formArrayName="conditionalLogic" class="gap-4">
@@ -32,7 +32,7 @@
                                 }
                             </mat-select>
                         </mat-form-field>
-                        <span>than open</span>
+                        <span>then open</span>
                         <mat-form-field
                             appearance="outline"
                             class="mat-select-wrapper"

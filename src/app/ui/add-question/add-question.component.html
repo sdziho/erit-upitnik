@@ -21,8 +21,11 @@
                                 }"
                             ></app-badge>
                             <mat-form-field appearance="fill">
-                                <mat-label>Question</mat-label>
-                                <input matInput formControlName="text" />
+                                <input
+                                    matInput
+                                    formControlName="text"
+                                    placeholder="Question"
+                                />
                             </mat-form-field>
                         </div>
                         <app-add-answer [question]="question"></app-add-answer>

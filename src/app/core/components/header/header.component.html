@@ -1,8 +1,11 @@
 <mat-toolbar class="app-topbar">
-    <div>
+    <div class="f--row-c">
         <button mat-button class="header-icons" (click)="handleMenuClick()">
             <mat-icon>{{ isNavbarOpen$() ? 'segment' : 'menu' }}</mat-icon>
         </button>
+        <span class="navigation-name">
+            {{ lastRouterName }}
+        </span>
     </div>
 
     <div>
