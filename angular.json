@@ -68,7 +68,8 @@
               "buildTarget": "erit-upitnik:build:production"
             },
             "development": {
-              "buildTarget": "erit-upitnik:build:development"
+              "buildTarget": "erit-upitnik:build:development",
+              "hmr": false
             }
           },
           "defaultConfiguration": "development"
