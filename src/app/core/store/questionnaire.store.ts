@@ -35,11 +35,13 @@ export class QuestionnaireStore {
     )
 
     initForm$() {
-        patchState(this.#state, {
-            form: this.#formProvicerService.generateForm(
-                QuestionnaireFormTypes.QUESTIONNAIRE
-            ),
-        })
+        if (!this.form$()) {
+            patchState(this.#state, {
+                form: this.#formProvicerService.generateForm(
+                    QuestionnaireFormTypes.QUESTIONNAIRE
+                ),
+            })
+        }
 
         return this.form$().valueChanges.pipe(
             tap((value) => {
